@@ -21,7 +21,7 @@
 | Crypto Tracker | BTC/ETH/SOL 가격 추적 | ✅ 완료 |
 | Telegram Alert | 가격 알림 봇 | ✅ 완료 |
 | GitHub Actions | 자동 업데이트 | ✅ 완료 |
-| Funding Rate Tracker | 펀딩비 추적 & 알림 | 🔜 다음 |
+| Funding Rate Tracker | 펀딩비 추적 & 알림 | ✅ 완료 |
 
 ### Phase 2: 데이터 분석 (4-6월)
 
@@ -102,6 +102,7 @@ vibe-coding-2026/
 | 날짜 | 배운 것 | 링크 |
 |------|--------|------|
 | 2026-01-17 | Python API 연동, Telegram Bot | [logs/2026-01/17.md](logs/2026-01/17.md) |
+| 2026-01-18 | GitHub Pages, 펀딩비 트래커 | [logs/2026-01/18.md](logs/2026-01/18.md) |
 
 ---
 
@@ -118,7 +119,7 @@ vibe-coding-2026/
 - [x] GitHub 연동
 - [x] 첫 번째 프로젝트 (Crypto Tracker)
 - [x] Telegram 알림 봇
-- [ ] 펀딩비 트래커
+- [x] 펀딩비 트래커
 - [ ] 차익거래 알림
 - [ ] 자동매매 봇
 
