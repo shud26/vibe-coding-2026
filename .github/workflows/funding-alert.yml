@@ -1,0 +1,29 @@
+name: 펀딩비 알림
+
+on:
+  schedule:
+    # 매 시간 정각에 실행 (UTC 기준)
+    - cron: '0 * * * *'
+
+  # 수동 실행 가능
+  workflow_dispatch:
+
+jobs:
+  check-funding:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 펀딩비 체크 및 알림
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 projects/funding-tracker/funding_actions.py
