@@ -1,0 +1,12 @@
+# Secrets
+credentials.json
+token.json
+*.json
+!package.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
