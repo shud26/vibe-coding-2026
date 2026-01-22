@@ -58,7 +58,7 @@
 - 3개 DEX: Hyperliquid, Pacifica, Variational
 - 차익거래 기회 TOP 3 표시
 - 예상 일일 수익률 계산
-- **김치 프리미엄 모니터링** (업비트 vs 바이낸스, 실시간 환율)
+- **김치 프리미엄 모니터링** (CoinGecko API, KRW vs USD, 실시간 환율)
 - 60초 자동 새로고침
 
 ### Todo List (/todo) - 풀 업그레이드!
@@ -199,6 +199,24 @@ npm run dev
 - Day 3: 2026-01-19 (대시보드 풀 업그레이드, Todo List + 텔레그램, React Hooks 버그 수정)
 - Day 4: 2026-01-20 (Cross-DEX 차익거래 봇, Google Calendar 연동, Todo 업그레이드)
 - Day 5: 2026-01-21 (Morning Briefing Bot, 김치 프리미엄 모니터링)
+
+---
+
+## 배운 것들 (Day 5)
+
+### Vercel 서버 지역 제한
+- 업비트 API는 한국 IP만 허용
+- Vercel 서버는 미국에 있어서 업비트 API 호출 실패
+- 해결: CoinGecko API 사용 (전 세계에서 작동)
+
+### CoinGecko API
+- 무료로 암호화폐 가격 조회 가능
+- KRW, USD 등 여러 통화 동시 조회
+- `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=krw,usd`
+
+### GitHub Actions cron
+- 매일 특정 시간에 자동 실행
+- `cron: '0 23 * * *'` = 매일 UTC 23시 = 한국시간 08시
 
 ---
 
