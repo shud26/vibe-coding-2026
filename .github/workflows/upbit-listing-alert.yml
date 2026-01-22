@@ -1,0 +1,47 @@
+name: Upbit Listing Alert
+
+on:
+  schedule:
+    # 10분마다 실행 (UTC 기준)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  check-listing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Restore known markets
+        continue-on-error: true
+        run: |
+          if [ -f "projects/upbit-listing-alert/known_markets.json" ]; then
+            echo "Known markets file exists"
+          fi
+
+      - name: Run listing checker
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          cd projects/upbit-listing-alert
+          python upbit_listing.py --once
+
+      - name: Save known markets
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add projects/upbit-listing-alert/known_markets.json || true
+          git diff --staged --quiet || git commit -m "Update known markets [skip ci]"
+          git push || true
