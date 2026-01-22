@@ -45,6 +45,7 @@
 | GitHub Actions 알림 | `vibe-coding-2026/.github/workflows/funding-alert.yml.disabled` | 1시간마다 자동 펀딩비 체크 (비활성화됨) |
 | 단일 펀딩비 트래커 | `vibe-coding-2026/projects/funding-tracker/funding_tracker.py` | Hyperliquid 전용 |
 | BTC 알림봇 | `claude-code-achievements/btc_alert.py` | 만 달러 단위 돌파 알림 |
+| 업비트 상장 알림 봇 | `vibe-coding-2026/projects/upbit-listing-alert/upbit_listing.py` | 마켓 리스트 방식 (비활성화됨) |
 | **실시간 대시보드** | `shud-portfolio/src/app/dashboard/` | 9개 코인, 차익거래 기회 표시 |
 | **Todo List + Calendar** | `shud-portfolio/src/app/todo/` | PIN 잠금 + 텔레그램 + Google Calendar |
 | **Paper Trading** | `shud-portfolio/src/app/trade/` | 가상 $10,000으로 연습 |
@@ -181,8 +182,9 @@ npm run dev
 - [ ] 펀딩비 차익거래 실제 테스트 (소액)
 - [ ] 자동 진입/청산 기능 추가
 - [ ] Bybit 거래소 추가
-- [ ] 업비트 신규 상장 알림
+- [x] 업비트 신규 상장 알림 (마켓 리스트 방식, 공지 API 없어서 실용성 낮음)
 - [ ] DEX 신규 페어 알림
+- [ ] 퍼프덱 신규 상장 스나이핑 (공지 API 필요)
 
 ---
 
@@ -199,6 +201,28 @@ npm run dev
 - Day 3: 2026-01-19 (대시보드 풀 업그레이드, Todo List + 텔레그램, React Hooks 버그 수정)
 - Day 4: 2026-01-20 (Cross-DEX 차익거래 봇, Google Calendar 연동, Todo 업그레이드)
 - Day 5: 2026-01-21 (Morning Briefing Bot, 김치 프리미엄 모니터링)
+- Day 6: 2026-01-23 (업비트 상장 알림 시도, API 리서치, 한계점 발견)
+
+---
+
+## 배운 것들 (Day 6)
+
+### 업비트 공지 API 현실
+- 업비트 공지사항 API는 **공식적으로 제공 안 함**
+- 예전에는 `api-manager.upbit.com/api/v1/notices` 작동했으나 현재 막힘
+- 기존 텔레그램 봇들은 Selenium 스크래핑 또는 예전 API 사용 추정
+- 뉴스 RSS (코인니스, 크립토패닉 등)도 대부분 막힘
+
+### 마켓 리스트 방식의 한계
+- `api.upbit.com/v1/market/all` API는 작동함
+- 새 코인이 마켓에 추가되면 감지 가능
+- **문제**: 공지 → 마켓 오픈까지 시간차 있음
+- 스나이핑 목적으로는 부적합 (공지 시점에 알아야 함)
+
+### 크립토 알림봇의 현실
+- 대부분의 거래소는 공지 API를 공개하지 않음
+- 빠른 알림을 위해서는 복잡한 스크래핑 필요
+- 또는 유료 뉴스 API 서비스 사용 필요
 
 ---
 
@@ -248,4 +272,4 @@ npm run dev
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-01-21*
+*마지막 업데이트: 2026-01-23*
