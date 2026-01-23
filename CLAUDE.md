@@ -15,19 +15,28 @@
 - 배포: https://shud26.vercel.app
 - 기술: Next.js, TypeScript, Tailwind CSS
 - 페이지: 메인, Projects, Blog, Dashboard, Todo, Trade
-- 블로그 글: Day 1, 2, 3, 4, 5, 6, 7 작성 완료
+- 블로그 글: Day 1, 2, 3, 4, 5, 6, 7, 8 작성 완료
 
 ### 2. vibe-coding-2026 (메인 레포)
 - 경로: `/Users/hun/vibe-coding-2026`
 - GitHub: https://github.com/shud26/vibe-coding-2026
 - 1년 로드맵, 학습 기록, 프로젝트 코드
 
-### 3. crypto-portfolio
+### 3. Triangle Dice Mini App ✅ NEW!
+- 경로: `/Users/hun/vibe-coding-2026/triangle-dice-miniapp`
+- GitHub: https://github.com/shud26/triangle-dice-miniapp
+- 배포: https://triangle-dice-miniapp.vercel.app
+- 기술: Vite + React + TypeScript + wagmi + OnchainKit
+- 체인: Base Sepolia (테스트넷)
+- 기능: 1v1 USDC 베팅 주사위 게임
+- 상태: Base Mini App 등록 진행 중
+
+### 4. crypto-portfolio
 - 경로: `/Users/hun/crypto-portfolio`
 - GitHub: https://github.com/shud26/crypto-portfolio
 - BTC/ETH/SOL 가격 트래커 (GitHub Actions 매 시간 업데이트)
 
-### 4. 포트폴리오 웹사이트 (구버전)
+### 5. 포트폴리오 웹사이트 (구버전)
 - 경로: `/Users/hun/shud26.github.io`
 - URL: https://shud26.github.io
 - 간단한 HTML/CSS 사이트
@@ -38,6 +47,7 @@
 
 | 툴 | 위치 | 설명 |
 |---|------|------|
+| **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
 | **Cross-DEX 펀딩비 차익거래 봇** | `vibe-coding-2026/projects/funding-arbitrage/funding_arb.py` | Hyperliquid vs Binance 스프레드 모니터링 |
 | **Todo + Calendar CLI** | `vibe-coding-2026/projects/funding-arbitrage/todo_calendar.py` | 할 일 + Google Calendar 연동 |
 | **Morning Briefing Bot** | `vibe-coding-2026/projects/funding-arbitrage/morning_briefing.py` | 매일 아침 8시 오늘 일정+할일 텔레그램 알림 |
@@ -50,6 +60,65 @@
 | **실시간 대시보드** | `shud-portfolio/src/app/dashboard/` | 9개 코인, 차익거래 + 가격 갭 모니터링 |
 | **Todo List + Calendar** | `shud-portfolio/src/app/todo/` | PIN 잠금 + 텔레그램 + Google Calendar |
 | **Paper Trading** | `shud-portfolio/src/app/trade/` | 가상 $10,000으로 연습 |
+
+---
+
+## Triangle Dice Mini App 상세
+
+### 개요 (Overview)
+- **1v1 베팅 게임**: 두 플레이어가 USDC를 걸고 주사위 게임
+- **삼각형 완성**: 점들을 연결해 삼각형을 만들면 점수 획득
+- **스마트 컨트랙트**: 에스크로 방식으로 안전한 베팅
+
+### 기술 스택 (Tech Stack)
+- Frontend: Vite + React 19 + TypeScript
+- Web3: wagmi 2.x + viem + @coinbase/onchainkit
+- Mini App SDK: @farcaster/miniapp-sdk
+- Chain: Base Sepolia Testnet
+
+### 컨트랙트 주소 (Contract Addresses)
+- MockUSDC: `0x2aC28e4754a9Eeae143399fC1B0B1F9bBe9E2CC3`
+- Escrow: `0x0e6Bb9F887B3ca03d942558FaB935701C5A44f21`
+
+### 주요 파일 (Key Files)
+```
+triangle-dice-miniapp/
+├── src/
+│   ├── main.tsx          # MiniKitProvider 설정
+│   ├── App.tsx           # 메인 앱 + SDK ready() 호출
+│   ├── config.ts         # wagmi + 체인 설정
+│   ├── minikit.config.ts # Mini App 메타데이터
+│   ├── pages/
+│   │   ├── Lobby.tsx     # 매치 생성/참가
+│   │   ├── Board.tsx     # 게임 보드
+│   │   └── Result.tsx    # 결과 화면
+│   └── components/
+│       └── WalletConnect.tsx  # 지갑 연결
+├── public/
+│   ├── .well-known/
+│   │   └── farcaster.json    # Mini App manifest
+│   └── assets/
+│       ├── icon.png      # 앱 아이콘 (200x200)
+│       ├── splash.png    # 스플래시 (400x400)
+│       └── preview.png   # 프리뷰 (1200x630)
+└── index.html            # base:app_id 메타태그
+```
+
+### Mini App 등록 절차 (Registration Process)
+1. base.dev 접속 (VPN 필요 - 한국 차단)
+2. App URL 입력 → 메타태그로 소유권 인증
+3. 지갑 서명 → Account Association 생성
+4. farcaster.json 업데이트 (header, payload, signature)
+5. primaryCategory, tags 등 메타데이터 추가
+
+### 현재 상태 (Current Status)
+- ✅ Vercel 배포 완료
+- ✅ 스마트 컨트랙트 배포 (Base Sepolia)
+- ✅ OnchainKit + MiniKit 통합
+- ✅ Account Association 완료
+- ✅ 메타데이터 설정 완료
+- ⏳ Ready call 디버깅 중
+- ⏳ Base App 검색 인덱싱 대기
 
 ---
 
@@ -101,7 +170,6 @@
 ## 설정 정보
 
 ### Telegram Bot
-- Token: `7881191796:AAEB4mN7dMIj3jEN0PoWAo46z6TPX-hawfI`
 - Chat ID: `6329588659`
 
 ### GitHub CLI
@@ -130,6 +198,10 @@
 ## 실행 명령어
 
 ```bash
+# Triangle Dice Mini App 로컬 실행
+cd /Users/hun/vibe-coding-2026/triangle-dice-miniapp
+npm run dev
+
 # Cross-DEX 펀딩비 차익거래 봇 (한 번)
 cd /Users/hun/vibe-coding-2026/projects/funding-arbitrage
 python3 funding_arb.py --once
@@ -156,9 +228,11 @@ npm run dev
 ## Vercel 배포 ✅ 완료
 
 - shud-portfolio 레포 연결됨
+- triangle-dice-miniapp 레포 연결됨
 - git push 하면 자동 배포!
-- URL: https://shud26.vercel.app
-- ⚠️ Google Calendar 환경변수 설정 필요 (Vercel 대시보드에서)
+- URLs:
+  - https://shud26.vercel.app
+  - https://triangle-dice-miniapp.vercel.app
 
 ---
 
@@ -176,19 +250,20 @@ npm run dev
 
 ## 다음에 할 것
 - [x] Vercel 배포 완료하기 ✅
-- [x] 블로그 글 작성 (Day 1, 2, 3, 4 완료) ✅
+- [x] 블로그 글 작성 (Day 1-8 완료) ✅
 - [x] 대시보드 실시간 데이터 연동 ✅
 - [x] Todo List + 텔레그램 알림 ✅
 - [x] Google Calendar 연동 ✅
 - [x] 펀딩비 차익거래 모니터링 봇 ✅
 - [x] Morning Briefing Bot (매일 아침 8시 자동 알림) ✅
 - [x] 김치 프리미엄 모니터링 (대시보드에 추가) ✅
+- [x] Triangle Dice Mini App 개발 ✅
+- [x] Base Mini App 등록 시작 ✅
+- [ ] Triangle Dice Ready call 문제 해결
+- [ ] Base App에서 검색 가능하게 만들기
+- [ ] 메인넷 배포 (실제 USDC 사용)
 - [ ] 펀딩비 차익거래 실제 테스트 (소액)
 - [ ] 자동 진입/청산 기능 추가
-- [ ] Bybit 거래소 추가
-- [x] 업비트 신규 상장 알림 (마켓 리스트 방식, 공지 API 없어서 실용성 낮음)
-- [ ] DEX 신규 페어 알림
-- [ ] 퍼프덱 신규 상장 스나이핑 (공지 API 필요)
 
 ---
 
@@ -207,6 +282,38 @@ npm run dev
 - Day 5: 2026-01-21 (Morning Briefing Bot, 김치 프리미엄 모니터링)
 - Day 6: 2026-01-23 (업비트 상장 알림 시도, API 리서치, 한계점 발견)
 - Day 7: 2026-01-23 (CEX/DEX 가격 갭 모니터링, 대시보드 업그레이드)
+- Day 8: 2026-01-24 (Triangle Dice → Base Mini App 변환, Account Association 완료)
+
+---
+
+## 배운 것들 (Day 8)
+
+### Base Mini App 개발
+- Base Mini App = Farcaster Mini App과 호환
+- Coinbase Wallet(Base App)에서 실행 가능한 경량 앱
+- farcaster.json manifest 파일 필수
+
+### Mini App 등록 과정
+1. `/.well-known/farcaster.json` 파일 생성
+2. base.dev에서 소유권 인증 (메타태그 방식)
+3. 지갑 서명으로 Account Association 생성
+4. manifest에 header, payload, signature 추가
+5. primaryCategory, tags 등 메타데이터 필수
+
+### 한국에서 base.dev 접속
+- Coinbase 서비스가 한국에서 제한됨
+- VPN (미국) 사용하면 접속 가능
+- Base App 자체는 한국에서 사용 가능 (170개국 지원)
+
+### OnchainKit vs Farcaster SDK
+- OnchainKit: Coinbase에서 만든 React 컴포넌트 라이브러리
+- @farcaster/miniapp-sdk: Mini App 전용 SDK
+- sdk.actions.ready() 호출로 앱 로딩 완료 신호
+
+### wagmi 버전 호환성
+- OnchainKit 1.x는 wagmi 2.x 필요
+- wagmi 3.x와 호환 안 됨
+- 다운그레이드 필요: `npm install wagmi@^2.16`
 
 ---
 
@@ -298,4 +405,4 @@ npm run dev
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-01-23*
+*마지막 업데이트: 2026-01-24*
