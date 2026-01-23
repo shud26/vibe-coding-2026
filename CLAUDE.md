@@ -15,7 +15,7 @@
 - 배포: https://shud26.vercel.app
 - 기술: Next.js, TypeScript, Tailwind CSS
 - 페이지: 메인, Projects, Blog, Dashboard, Todo, Trade
-- 블로그 글: Day 1, 2, 3, 4, 5 작성 완료
+- 블로그 글: Day 1, 2, 3, 4, 5, 6, 7 작성 완료
 
 ### 2. vibe-coding-2026 (메인 레포)
 - 경로: `/Users/hun/vibe-coding-2026`
@@ -46,7 +46,8 @@
 | 단일 펀딩비 트래커 | `vibe-coding-2026/projects/funding-tracker/funding_tracker.py` | Hyperliquid 전용 |
 | BTC 알림봇 | `claude-code-achievements/btc_alert.py` | 만 달러 단위 돌파 알림 |
 | 업비트 상장 알림 봇 | `vibe-coding-2026/projects/upbit-listing-alert/upbit_listing.py` | 마켓 리스트 방식 (비활성화됨) |
-| **실시간 대시보드** | `shud-portfolio/src/app/dashboard/` | 9개 코인, 차익거래 기회 표시 |
+| **CEX/DEX 가격 갭 모니터링** | `vibe-coding-2026/projects/price-gap-monitor/price_gap.py` | 5개 거래소 가격 비교 + 텔레그램 알림 |
+| **실시간 대시보드** | `shud-portfolio/src/app/dashboard/` | 9개 코인, 차익거래 + 가격 갭 모니터링 |
 | **Todo List + Calendar** | `shud-portfolio/src/app/todo/` | PIN 잠금 + 텔레그램 + Google Calendar |
 | **Paper Trading** | `shud-portfolio/src/app/trade/` | 가상 $10,000으로 연습 |
 
@@ -60,6 +61,9 @@
 - 차익거래 기회 TOP 3 표시
 - 예상 일일 수익률 계산
 - **김치 프리미엄 모니터링** (CoinGecko API, KRW vs USD, 실시간 환율)
+- **CEX/DEX 가격 갭 모니터링** (Binance, Bybit, OKX, Bitget, Hyperliquid)
+  - Hyperliquid 전체 코인 (500개+) 모니터링
+  - 1% 이상 갭만 표시 + 텔레그램 알림
 - 60초 자동 새로고침
 
 ### Todo List (/todo) - 풀 업그레이드!
@@ -202,6 +206,28 @@ npm run dev
 - Day 4: 2026-01-20 (Cross-DEX 차익거래 봇, Google Calendar 연동, Todo 업그레이드)
 - Day 5: 2026-01-21 (Morning Briefing Bot, 김치 프리미엄 모니터링)
 - Day 6: 2026-01-23 (업비트 상장 알림 시도, API 리서치, 한계점 발견)
+- Day 7: 2026-01-23 (CEX/DEX 가격 갭 모니터링, 대시보드 업그레이드)
+
+---
+
+## 배운 것들 (Day 7)
+
+### CEX/DEX 가격 갭 모니터링
+- 같은 코인이라도 거래소마다 가격이 다름
+- 이 차이를 이용한 차익거래 가능
+- 단, 수수료, 슬리피지, 전송 시간 고려 필요
+
+### 거래소 API 연동
+- Binance: `fapi.binance.com/fapi/v1/ticker/price`
+- Bybit: `api.bybit.com/v5/market/tickers`
+- OKX: `www.okx.com/api/v5/market/tickers`
+- Bitget: `api.bitget.com/api/v2/mix/market/tickers`
+- Hyperliquid: `api.hyperliquid.xyz/info` (POST)
+
+### False Positive 필터링
+- 같은 심볼이라도 다른 토큰일 수 있음 (NTRN 등)
+- 15% 이상 갭은 제외 (다른 토큰일 가능성)
+- 최소 3개 거래소에서 가격 있어야 신뢰도 높음
 
 ---
 
