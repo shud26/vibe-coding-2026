@@ -1,0 +1,3 @@
+[submodule "triangle-dice-miniapp/contracts/lib/openzeppelin-contracts"]
+	path = triangle-dice-miniapp/contracts/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
