@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useMiniKit } from '@coinbase/onchainkit/minikit';
-import sdk from '@farcaster/miniapp-sdk';
 import { wagmiConfig } from './config';
 import { Lobby } from './pages/Lobby';
 import { Board } from './pages/Board';
@@ -25,27 +23,10 @@ function AppContent() {
   const [matchInfo, setMatchInfo] = useState<MatchInfo | null>(null);
   const [finalGameState, setFinalGameState] = useState<GameState | null>(null);
 
-  // MiniKit integration
-  const { setFrameReady, isFrameReady, context } = useMiniKit();
-
-  // Signal to Farcaster/Base that the app is ready - using official SDK
+  // App is ready - log for debugging
   useEffect(() => {
-    // Use official Farcaster SDK
-    sdk.actions.ready();
-    console.log('Farcaster SDK ready() called');
-
-    // Also try OnchainKit method
-    if (!isFrameReady) {
-      setFrameReady();
-    }
-  }, [setFrameReady, isFrameReady]);
-
-  // Log context for debugging (Farcaster user info available here)
-  useEffect(() => {
-    if (context) {
-      console.log('MiniKit context:', context);
-    }
-  }, [context]);
+    console.log('Triangle Dice app loaded');
+  }, []);
 
   const handleMatchCreated = (matchId: bigint) => {
     // In real implementation, would get this from contract event

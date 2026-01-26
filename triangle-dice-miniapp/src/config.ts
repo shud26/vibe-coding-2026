@@ -2,11 +2,10 @@ import { baseSepolia } from 'wagmi/chains';
 import { http, createConfig, createStorage } from 'wagmi';
 import { coinbaseWallet, injected } from 'wagmi/connectors';
 
-// Contract addresses (update after deployment)
-// Trim to remove any accidental whitespace from env vars
+// Contract addresses on Base Sepolia
 export const CONTRACTS = {
-  USDC: (import.meta.env.VITE_USDC_ADDRESS || '0x0000000000000000000000000000000000000000').trim(),
-  ESCROW: (import.meta.env.VITE_ESCROW_ADDRESS || '0x0000000000000000000000000000000000000000').trim(),
+  USDC: '0x2aC28e4754a9Eeae143399fC1B0B1F9bBe9E2CC3',
+  ESCROW: '0x0e6Bb9F887B3ca03d942558FaB935701C5A44f21',
 } as const;
 
 // Chain config
