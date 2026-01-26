@@ -35,8 +35,9 @@
   - 김치 프리미엄 & 차익거래 기회
   - 고래 지갑 추적 + 활동 분석
   - **Whale Alert** (5+ ETH / $50K+ 토큰 이동 텔레그램 알림, 매일 오전 8시 자동 체크)
+  - **개발 블로그** (/blog, /blog/[slug]) - Day 1~11 글, PIN 로그인 후 추가/수정/삭제
   - PIN 로그인 (1507)
-- DB: Supabase (airdrops, airdrop_tasks, todos, events, research, whale_wallets, whale_alerts)
+- DB: Supabase (airdrops, airdrop_tasks, todos, events, research, whale_wallets, whale_alerts, blog_posts)
 
 ### 5. Triangle Dice Mini App
 - 경로: `/Users/hun/vibe-coding-2026/triangle-dice-miniapp`
@@ -63,7 +64,8 @@
 
 | 툴 | 위치 | 설명 |
 |---|------|------|
-| **shud-onepage** | `tftchess/` | 원페이지 크립토 대시보드 (에어드랍, 리서치, 캘린더) |
+| **shud-onepage** | `tftchess/` | 원페이지 크립토 대시보드 (에어드랍, 리서치, 캘린더, 블로그) |
+| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~11 블로그, Supabase blog_posts, PIN 관리 |
 | **Whale Alert** | `tftchess/src/lib/whale-checker.ts` | 고래 지갑 5+ ETH / $50K+ 토큰 이동 텔레그램 알림 |
 | **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
 | **Cross-DEX 펀딩비 차익거래 봇** | `vibe-coding-2026/projects/funding-arbitrage/funding_arb.py` | Hyperliquid vs Binance 스프레드 모니터링 |
@@ -285,7 +287,9 @@ npm run dev
 - [x] Base Mini App 등록 시작 ✅
 - [x] shud-onepage 사이트 생성 (tftchess.com) ✅
 - [x] Whale Alert 기능 (고래 지갑 이동 텔레그램 알림) ✅
+- [x] tftchess.com 블로그 기능 추가 + Day 1~10 이전 ✅
 - [ ] shud-onepage 이미지 첨부 기능
+- [ ] 블로그 SEO 메타태그 (og:title 등)
 - [ ] shud-onepage 광고 추가 (AdSense)
 - [ ] Triangle Dice Ready call 문제 해결
 - [ ] Base App에서 검색 가능하게 만들기
@@ -302,7 +306,8 @@ npm run dev
 "오늘도 블로그 글 쓰셔야 해요! Day X 쓸까요?"
 ```
 
-블로그 위치: `/Users/hun/shud-portfolio/src/app/blog/`
+블로그 위치: `tftchess.com/blog` (Supabase blog_posts 테이블)
+- 기존 위치: `/Users/hun/shud-portfolio/src/app/blog/` (Day 1~10, 이전 완료)
 - Day 1: 2026-01-17 (Claude Code 설치, BTC 가격 조회, 텔레그램 봇, GitHub 연동)
 - Day 2: 2026-01-18 (포트폴리오 사이트, 멀티 DEX 트래커, GitHub Actions, Vercel 배포)
 - Day 3: 2026-01-19 (대시보드 풀 업그레이드, Todo List + 텔레그램, React Hooks 버그 수정)
@@ -313,6 +318,31 @@ npm run dev
 - Day 8: 2026-01-24 (Triangle Dice → Base Mini App 변환, Account Association 완료)
 - Day 9: 2026-01-24 (shud-onepage 사이트 생성, Supabase 연동, tftchess.com 배포)
 - Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
+- Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너)
+
+---
+
+## 배운 것들 (Day 11)
+
+### tftchess.com 블로그 기능
+- Next.js App Router 동적 라우팅 ([slug] 폴더)
+- dangerouslySetInnerHTML로 HTML 본문 렌더링
+- PostgreSQL TEXT[] (배열 타입)으로 태그 저장
+- Supabase upsert로 중복 없이 데이터 삽입
+- .blog-content CSS 클래스로 HTML 본문 스타일링
+- 마이그레이션 스크립트 (npx tsx migrate_blog.ts)
+
+### JSX → HTML 변환
+- className → class
+- {" "} → 공백
+- JSX 표현식 → 순수 HTML
+- 파란 테마 → 오렌지 테마 (#FF5C00)
+
+### 블로그 구조
+- /blog → 목록 (Supabase에서 조회, 최신순)
+- /blog/[slug] → 개별 글 (dangerouslySetInnerHTML)
+- 홈페이지 → 최신 3개 글 프리뷰 카드
+- PIN 로그인 후 CRUD (추가/수정/삭제)
 
 ---
 
@@ -486,4 +516,4 @@ npm run dev
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-01-26*
+*마지막 업데이트: 2026-01-27*
