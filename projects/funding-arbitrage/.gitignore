@@ -3,6 +3,7 @@ credentials.json
 token.json
 *.json
 !package.json
+.env
 
 # Python
 __pycache__/

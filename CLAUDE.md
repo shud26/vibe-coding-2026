@@ -15,28 +15,44 @@
 - 배포: https://shud26.vercel.app
 - 기술: Next.js, TypeScript, Tailwind CSS
 - 페이지: 메인, Projects, Blog, Dashboard, Todo, Trade
-- 블로그 글: Day 1, 2, 3, 4, 5, 6, 7, 8 작성 완료
+- 블로그 글: Day 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 작성 완료
 
 ### 2. vibe-coding-2026 (메인 레포)
 - 경로: `/Users/hun/vibe-coding-2026`
 - GitHub: https://github.com/shud26/vibe-coding-2026
 - 1년 로드맵, 학습 기록, 프로젝트 코드
 
-### 3. Triangle Dice Mini App ✅ NEW!
+### 3. shud-onepage (tftchess.com) ✅ NEW!
+- 경로: `/Users/hun/tftchess`
+- GitHub: https://github.com/shud26/shud-onepage
+- 배포: https://tftchess.com
+- 기술: Next.js 16 + TypeScript + Tailwind CSS + Supabase
+- 기능: 원페이지 크립토 대시보드
+  - 에어드랍 트래커 (태스크별 비용 관리)
+  - 코인 리서치 노트 (풀스크린 상세보기)
+  - 캘린더 + 이벤트 메모
+  - 할 일 목록
+  - 김치 프리미엄 & 차익거래 기회
+  - 고래 지갑 추적 + 활동 분석
+  - **Whale Alert** (5+ ETH / $50K+ 토큰 이동 텔레그램 알림, 매일 오전 8시 자동 체크)
+  - PIN 로그인 (1507)
+- DB: Supabase (airdrops, airdrop_tasks, todos, events, research, whale_wallets, whale_alerts)
+
+### 5. Triangle Dice Mini App
 - 경로: `/Users/hun/vibe-coding-2026/triangle-dice-miniapp`
 - GitHub: https://github.com/shud26/triangle-dice-miniapp
 - 배포: https://triangle-dice-miniapp.vercel.app
-- 기술: Vite + React + TypeScript + wagmi + OnchainKit
+- 기술: Vite + React + TypeScript + wagmi
 - 체인: Base Sepolia (테스트넷)
 - 기능: 1v1 USDC 베팅 주사위 게임
-- 상태: Base Mini App 등록 진행 중
+- 상태: 웹 브라우저 호환성 수정 완료 ✅
 
-### 4. crypto-portfolio
+### 6. crypto-portfolio
 - 경로: `/Users/hun/crypto-portfolio`
 - GitHub: https://github.com/shud26/crypto-portfolio
 - BTC/ETH/SOL 가격 트래커 (GitHub Actions 매 시간 업데이트)
 
-### 5. 포트폴리오 웹사이트 (구버전)
+### 7. 포트폴리오 웹사이트 (구버전)
 - 경로: `/Users/hun/shud26.github.io`
 - URL: https://shud26.github.io
 - 간단한 HTML/CSS 사이트
@@ -47,6 +63,8 @@
 
 | 툴 | 위치 | 설명 |
 |---|------|------|
+| **shud-onepage** | `tftchess/` | 원페이지 크립토 대시보드 (에어드랍, 리서치, 캘린더) |
+| **Whale Alert** | `tftchess/src/lib/whale-checker.ts` | 고래 지갑 5+ ETH / $50K+ 토큰 이동 텔레그램 알림 |
 | **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
 | **Cross-DEX 펀딩비 차익거래 봇** | `vibe-coding-2026/projects/funding-arbitrage/funding_arb.py` | Hyperliquid vs Binance 스프레드 모니터링 |
 | **Todo + Calendar CLI** | `vibe-coding-2026/projects/funding-arbitrage/todo_calendar.py` | 할 일 + Google Calendar 연동 |
@@ -198,6 +216,10 @@ triangle-dice-miniapp/
 ## 실행 명령어
 
 ```bash
+# shud-onepage 로컬 실행
+cd /Users/hun/tftchess
+npm run dev
+
 # Triangle Dice Mini App 로컬 실행
 cd /Users/hun/vibe-coding-2026/triangle-dice-miniapp
 npm run dev
@@ -229,10 +251,12 @@ npm run dev
 
 - shud-portfolio 레포 연결됨
 - triangle-dice-miniapp 레포 연결됨
+- shud-onepage 레포 연결됨 (tftchess.com 도메인)
 - git push 하면 자동 배포!
 - URLs:
   - https://shud26.vercel.app
   - https://triangle-dice-miniapp.vercel.app
+  - https://tftchess.com
 
 ---
 
@@ -259,6 +283,10 @@ npm run dev
 - [x] 김치 프리미엄 모니터링 (대시보드에 추가) ✅
 - [x] Triangle Dice Mini App 개발 ✅
 - [x] Base Mini App 등록 시작 ✅
+- [x] shud-onepage 사이트 생성 (tftchess.com) ✅
+- [x] Whale Alert 기능 (고래 지갑 이동 텔레그램 알림) ✅
+- [ ] shud-onepage 이미지 첨부 기능
+- [ ] shud-onepage 광고 추가 (AdSense)
 - [ ] Triangle Dice Ready call 문제 해결
 - [ ] Base App에서 검색 가능하게 만들기
 - [ ] 메인넷 배포 (실제 USDC 사용)
@@ -283,6 +311,58 @@ npm run dev
 - Day 6: 2026-01-23 (업비트 상장 알림 시도, API 리서치, 한계점 발견)
 - Day 7: 2026-01-23 (CEX/DEX 가격 갭 모니터링, 대시보드 업그레이드)
 - Day 8: 2026-01-24 (Triangle Dice → Base Mini App 변환, Account Association 완료)
+- Day 9: 2026-01-24 (shud-onepage 사이트 생성, Supabase 연동, tftchess.com 배포)
+- Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
+
+---
+
+## 배운 것들 (Day 10)
+
+### Triangle Dice 웹 브라우저 호환성
+- Mini App SDK는 일반 브라우저에서 작동 안 함
+- MiniKitProvider 제거 필요
+- useMiniKit, useIsInMiniApp 훅 제거
+- wagmi 훅만 사용하면 웹에서도 작동
+- 컨트랙트 주소 하드코딩 (Vercel env 없어서)
+
+### Clawdbot (개인 AI 비서)
+- Claude 기반 오픈소스 개인 비서
+- 텔레그램/디스코드 등으로 접속
+- 이메일, 캘린더, 브라우저 자동화, 터미널 실행 가능
+- proactive 알림 가능 (먼저 연락함)
+- 보안 주의: 파일/터미널 접근 권한 있음
+- 크립토 지갑 있는 PC에 설치 비추천
+- GitHub: https://github.com/clawdbot/clawdbot
+
+### 구형 맥 서버 시도
+- 24시간 크립토 봇 서버로 쓰려고 함
+- OS 버전 너무 낮아서 실패
+- 대안 필요: 클라우드 서버, 라즈베리 파이 등
+
+---
+
+## 배운 것들 (Day 9)
+
+### Cloudflare Pages vs Vercel
+- Cloudflare Pages는 Next.js 15.5.2까지만 지원
+- Next.js 16 사용하려면 Vercel 사용
+- @cloudflare/next-on-pages 패키지의 peer dependency 제한
+
+### Supabase 연동
+- PostgreSQL 기반 무료 데이터베이스
+- RLS(Row Level Security) 기본 활성화
+- 개인용은 `ALTER TABLE xxx DISABLE ROW LEVEL SECURITY;`
+- anon key는 공개해도 안전 (RLS로 보호됨)
+
+### Vercel 환경변수 문제
+- NEXT_PUBLIC_ 접두사 필요 (클라이언트 노출용)
+- 환경변수가 undefined면 "Invalid value" 에러 발생
+- 해결: 코드에 직접 하드코딩 (anon key만)
+
+### CSS 텍스트 줄바꿈
+- `white-space: pre-wrap` - 줄바꿈 유지
+- `word-wrap: break-word` - 긴 단어 줄바꿈
+- `max-w-3xl` - 적당한 폭에서 자동 줄바꿈
 
 ---
 
@@ -400,9 +480,10 @@ npm run dev
 ---
 
 ## 참고
+- **김테크 (본업)**: `/Users/hun/kimtech/CLAUDE.md` - 기술교사 프로젝트 별도 관리
 - paradexbot 폴더에 추가 코드 있음
 - 학습 기록: `vibe-coding-2026/logs/`
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-01-24*
+*마지막 업데이트: 2026-01-26*
