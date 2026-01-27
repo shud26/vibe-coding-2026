@@ -39,6 +39,29 @@
   - PIN 로그인 (1507)
 - DB: Supabase (airdrops, airdrop_tasks, todos, events, research, whale_wallets, whale_alerts, blog_posts)
 
+### 4. Variational Delta Neutral Bot ✅ 실거래 완료
+- 경로: `/Users/hun/vibe-coding-2026/projects/variational-delta-neutral`
+- GitHub: https://github.com/shud26/variational-delta-neutral
+- 기술: Python3, curl_cffi (Cloudflare 우회), eth_account, web3.py
+- 체인: Arbitrum One (USDC)
+- 기능:
+  - 2계정 델타뉴트럴 포인트 파밍 (A1 매수 + A2 매도 → 청산)
+  - SIWE 서명 로그인 → JWT + vr-token 인증
+  - 지정가/시장가 주문, 포지션/잔액 조회
+  - 텔레그램 알림 (사이클 완료, 잔액 부족, 수익 발생)
+  - 잔액 모니터링 ($300 이하 시 입금 알림)
+  - 자동 입출금 코드 구현 (Cloudflare 차단으로 대기 중)
+  - Arbitrum 지갑 USDC 잔액 조회 (web3.py)
+- 파일:
+  - `variational_client.py` - API 클라이언트 (로그인, 주문, 잔액, 입출금)
+  - `variational_bot.py` - 메인 봇 (델타뉴트럴 사이클, 자동 반복, 잔액 관리)
+  - `variational_app.py` - 데스크톱 GUI (tkinter)
+- 컨트랙트:
+  - Oracle: `0x84BE56470d45b7f6629A66A219a38681F6BA6172`
+  - USDC (Arbitrum): `0xaf88d065e77c8cC2239327C5EDb3A432268e5831`
+  - A1 Settlement Pool: `0xaB9Ef61C5d4c963ca4bD361577051B9b0E14a5c9`
+  - A2 Settlement Pool: `0x291B7091FD6A3bA497588fB8Abca36d13c090ba0`
+
 ### 5. Triangle Dice Mini App
 - 경로: `/Users/hun/vibe-coding-2026/triangle-dice-miniapp`
 - GitHub: https://github.com/shud26/triangle-dice-miniapp
@@ -68,6 +91,7 @@
 | **개발 블로그** | `tftchess/src/app/blog/` | Day 1~11 블로그, Supabase blog_posts, PIN 관리 |
 | **Whale Alert** | `tftchess/src/lib/whale-checker.ts` | 고래 지갑 5+ ETH / $50K+ 토큰 이동 텔레그램 알림 |
 | **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
+| **Variational Delta Neutral Bot** | `vibe-coding-2026/projects/variational-delta-neutral/` | 2계정 델타뉴트럴 포인트 파밍 (Arbitrum) |
 | **Cross-DEX 펀딩비 차익거래 봇** | `vibe-coding-2026/projects/funding-arbitrage/funding_arb.py` | Hyperliquid vs Binance 스프레드 모니터링 |
 | **Todo + Calendar CLI** | `vibe-coding-2026/projects/funding-arbitrage/todo_calendar.py` | 할 일 + Google Calendar 연동 |
 | **Morning Briefing Bot** | `vibe-coding-2026/projects/funding-arbitrage/morning_briefing.py` | 매일 아침 8시 오늘 일정+할일 텔레그램 알림 |
@@ -179,7 +203,7 @@ triangle-dice-miniapp/
 | Hyperliquid | 자체 L1 | `api.hyperliquid.xyz` | ✅ 연동 |
 | Binance | - | `fapi.binance.com` | ✅ 연동 (차익거래용) |
 | Pacifica | Solana | `api.pacifica.fi` | ✅ 연동 |
-| Variational | Arbitrum | `omni-client-api.prod.ap-northeast-1.variational.io` | ⚠️ 읽기만 가능 (Trading API 개발 중) |
+| Variational | Arbitrum | `omni.variational.io` (curl_cffi 필요) | ✅ 거래 연동 완료 (입출금 API는 CF 차단) |
 | Nado | Ink (Kraken L2) | 확인 필요 | 미연동 |
 | Extended | Starknet | 확인 필요 | 미연동 |
 
@@ -242,6 +266,15 @@ python3 todo_calendar.py done 1
 python3 morning_briefing.py          # 바로 전송
 python3 morning_briefing.py --test   # 테스트 (전송 안함)
 
+# Variational Delta Neutral Bot
+cd /Users/hun/vibe-coding-2026/projects/variational-delta-neutral
+python3 variational_bot.py --once              # 1사이클 실행
+python3 variational_bot.py --once --dry-run    # 시뮬레이션
+python3 variational_bot.py --accounts 2        # 자동 반복
+python3 variational_bot.py --status            # 상태 확인
+python3 variational_bot.py --close-all         # 긴급 청산
+python3 variational_bot.py --balance           # 잔액 관리
+
 # 포트폴리오 사이트 로컬 실행
 cd /Users/hun/shud-portfolio
 npm run dev
@@ -288,6 +321,10 @@ npm run dev
 - [x] shud-onepage 사이트 생성 (tftchess.com) ✅
 - [x] Whale Alert 기능 (고래 지갑 이동 텔레그램 알림) ✅
 - [x] tftchess.com 블로그 기능 추가 + Day 1~10 이전 ✅
+- [x] Variational Delta Neutral Bot 개발 + 실거래 성공 ✅
+- [x] Variational API 역공학 (로그인, 주문, 시세, 잔액) ✅
+- [x] 잔액 모니터링 + 텔레그램 알림 ✅
+- [ ] Variational 자동 입출금 (API 오픈 대기)
 - [ ] shud-onepage 이미지 첨부 기능
 - [ ] 블로그 SEO 메타태그 (og:title 등)
 - [ ] shud-onepage 광고 추가 (AdSense)
@@ -318,7 +355,7 @@ npm run dev
 - Day 8: 2026-01-24 (Triangle Dice → Base Mini App 변환, Account Association 완료)
 - Day 9: 2026-01-24 (shud-onepage 사이트 생성, Supabase 연동, tftchess.com 배포)
 - Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
-- Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너)
+- Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너, Variational Delta Neutral Bot 실거래 성공, 자동 입출금 구현 시도)
 
 ---
 
@@ -343,6 +380,35 @@ npm run dev
 - /blog/[slug] → 개별 글 (dangerouslySetInnerHTML)
 - 홈페이지 → 최신 3개 글 프리뷰 카드
 - PIN 로그인 후 CRUD (추가/수정/삭제)
+
+### Variational DEX API 역공학
+- SIWE (Sign-In with Ethereum) 인증: plain text 메시지 서명 → JWT + vr-token 쿠키
+- curl_cffi로 Cloudflare TLS fingerprint 우회 (Chrome impersonation)
+- instrument 형식: `{"instrument_type": "perpetual_future", "underlying": "BTC", "funding_interval_s": 3600, "settlement_asset": "USDC"}`
+- 주문: `rfq_id`로 추적, `order_type: "limit"` + `limit_price` 필요
+- 시장가: `quote_id`만으로 주문
+- 잔액: `/api/settlement_pools/details` → `data["balance"]`
+- Cloudflare 429 rate limit → 재시도 로직 (exponential backoff)
+
+### 델타뉴트럴 전략 실전
+- A1 매수 + A2 매도 → 같은 가격에 양방향 주문
+- 체결 후 역방향 주문으로 청산
+- 가격 위험 없이 거래량 발생 → 포인트 파밍
+- 부분 체결 시 시장가 청산으로 손실 최소화
+
+### Variational 자동 입출금 (미완)
+- 스마트 컨트랙트 `depositUSDC`/`withdrawUSDC`는 PROVIDER_ROLE 필요 (직접 호출 불가)
+- 입금 흐름: ERC-2612 permit 서명 → API → 백엔드가 온체인 실행
+- API 엔드포인트 찾음: `/api/transfers/permit/template`, `/api/transfers/new`
+- 하지만 Cloudflare JavaScript 챌린지로 차단됨
+- Oracle 컨트랙트의 `getPool(uint128)` 함수로 pool 주소 조회 가능
+- web3.py로 Arbitrum 온체인 USDC 잔액 조회 구현
+
+### Variational 컨트랙트 구조
+- Oracle 컨트랙트: 모든 입출금 트랜잭션 실행 (PROVIDER_ROLE 필요)
+- Settlement Pool Factory: 사용자별 풀 생성
+- Settlement Pool: 사용자-OLP 쌍별 독립 풀 (EIP-1167 minimal proxy)
+- ERC-2612 permit: USDC가 네이티브 지원, 가스비 없이 승인 가능
 
 ---
 
