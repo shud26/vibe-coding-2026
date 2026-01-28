@@ -22,7 +22,21 @@
 - GitHub: https://github.com/shud26/vibe-coding-2026
 - 1년 로드맵, 학습 기록, 프로젝트 코드
 
-### 3. shud-onepage (tftchess.com) ✅ NEW!
+### 3. stockpick26.com (영어 주식 용어 사전) ✅ NEW!
+- 경로: `/Users/hun/stockpick26`
+- GitHub: https://github.com/shud26/stockpick26
+- 배포: https://stockpick26.com
+- 기술: Next.js 16 + TypeScript + Tailwind CSS
+- 목적: AdSense 수익용 SEO 사이트
+- 컨텐츠:
+  - **39개 주식 용어** (P/E, P/B, EPS, ROE, Dividend 등)
+  - **4개 계산기** (P/E, Dividend Yield, Compound Growth, Position Size)
+  - **3개 가이드** (Stock Charts, 5 Key Numbers, Dividend Investing)
+  - Privacy Policy, About 페이지
+- SEO: generateMetadata, JSON-LD, SSG
+- AdSense: ca-pub-8600828705366909 연동 완료
+
+### 4. shud-onepage (tftchess.com)
 - 경로: `/Users/hun/tftchess`
 - GitHub: https://github.com/shud26/shud-onepage
 - 배포: https://tftchess.com
@@ -87,8 +101,9 @@
 
 | 툴 | 위치 | 설명 |
 |---|------|------|
+| **stockpick26.com** | `stockpick26/` | 영어 주식 용어 사전 (39개 용어, 4개 계산기, 3개 가이드) |
 | **shud-onepage** | `tftchess/` | 원페이지 크립토 대시보드 (에어드랍, 리서치, 캘린더, 블로그) |
-| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~11 블로그, Supabase blog_posts, PIN 관리 |
+| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~12 블로그, Supabase blog_posts, PIN 관리 |
 | **Whale Alert** | `tftchess/src/lib/whale-checker.ts` | 고래 지갑 5+ ETH / $50K+ 토큰 이동 텔레그램 알림 |
 | **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
 | **Variational Delta Neutral Bot** | `vibe-coding-2026/projects/variational-delta-neutral/` | 2계정 델타뉴트럴 포인트 파밍 (Arbitrum) |
@@ -356,6 +371,33 @@ npm run dev
 - Day 9: 2026-01-24 (shud-onepage 사이트 생성, Supabase 연동, tftchess.com 배포)
 - Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
 - Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너, Variational Delta Neutral Bot 실거래 성공, 자동 입출금 구현 시도)
+- Day 12: 2026-01-29 (stockpick26.com 런칭, 영어 주식 용어 39개, 계산기 4개, 가이드 3개, AdSense 연동)
+
+---
+
+## 배운 것들 (Day 12)
+
+### stockpick26.com 사이트 생성
+- 영어 타겟 → AdSense CPC 높음 (미국/유럽)
+- 도메인 구매 (Namecheap) + DNS 설정 (A 레코드 → 76.76.21.21)
+- Vercel CLI로 배포 + 도메인 연결
+
+### SEO 최적화
+- generateMetadata로 동적 메타태그
+- JSON-LD 구조화 데이터 (DefinedTerm 스키마)
+- generateStaticParams로 SSG (39개 용어 페이지 프리렌더)
+- canonical URL 설정
+
+### 인터랙티브 계산기
+- useState로 실시간 계산 결과
+- 조건부 렌더링으로 결과 표시
+- 색상으로 결과 해석 (green=good, yellow=warning, red=bad)
+
+### AI티 안 나는 글쓰기
+- 캐주얼한 표현 사용 ("Let's be real", "meh", "jackpot")
+- 개인 의견 포함 ("I'm not saying...", "That's the point")
+- 실용적 조언과 경고 ("Watch out", "Don't chase yield")
+- 짧은 문장, 불릿 포인트 활용
 
 ---
 
@@ -582,4 +624,4 @@ npm run dev
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-01-27*
+*마지막 업데이트: 2026-01-29*
