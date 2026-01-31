@@ -75,10 +75,16 @@
 - MoodJournal iOS 앱 개발 시작
 - Apple NLP 감정 분석 연동
 
-### Day 14 (2026-02-01) - MM봇 공부
+### Day 14 (2026-01-31) - vibe-coding-2026 정리
+- Day 3-14 학습 로그 추가
+- README 로드맵 업데이트
+- Day 12-14 블로그 스타일 수정
+
+### Day 15 (2026-02-01) - MM봇 첫 실전
 - tread.fi + Nado MM봇 공부
-- tftchess.com에 MM Timing 대시보드 추가
-- BTC/USDC 실시간 변동성 분석 기능
+- tftchess.com에 MM Timing Signal 대시보드 추가
+- Nado $110 입금, MM 봇 첫 실전 ($15k 볼륨, $4.5 비용)
+- MM 봇 개발 커리큘럼 작성 (Day 16-70)
 
 ---
 

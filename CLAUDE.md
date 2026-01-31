@@ -49,7 +49,8 @@
   - 김치 프리미엄 & 차익거래 기회
   - 고래 지갑 추적 + 활동 분석
   - **Whale Alert** (5+ ETH / $50K+ 토큰 이동 텔레그램 알림, 매일 오전 8시 자동 체크)
-  - **개발 블로그** (/blog, /blog/[slug]) - Day 1~11 글, PIN 로그인 후 추가/수정/삭제
+  - **개발 블로그** (/blog, /blog/[slug]) - Day 1~15 글, PIN 로그인 후 추가/수정/삭제
+  - **MM Timing Signal** (BTC 변동성 체크, 80점 이상일 때 MM 봇 GO)
   - PIN 로그인 (1507)
 - DB: Supabase (airdrops, airdrop_tasks, todos, events, research, whale_wallets, whale_alerts, blog_posts)
 
@@ -103,7 +104,8 @@
 |---|------|------|
 | **stockpick26.com** | `stockpick26/` | 영어 주식 용어 사전 (39개 용어, 4개 계산기, 3개 가이드) |
 | **shud-onepage** | `tftchess/` | 원페이지 크립토 대시보드 (에어드랍, 리서치, 캘린더, 블로그) |
-| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~12 블로그, Supabase blog_posts, PIN 관리 |
+| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~15 블로그, Supabase blog_posts, PIN 관리 |
+| **MM Timing Signal** | `tftchess/src/app/page.tsx` | BTC 변동성 체크 대시보드 (ATR, Spread, Trend, Volume) |
 | **Whale Alert** | `tftchess/src/lib/whale-checker.ts` | 고래 지갑 5+ ETH / $50K+ 토큰 이동 텔레그램 알림 |
 | **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
 | **Variational Delta Neutral Bot** | `vibe-coding-2026/projects/variational-delta-neutral/` | 2계정 델타뉴트럴 포인트 파밍 (Arbitrum) |
@@ -372,6 +374,74 @@ npm run dev
 - Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
 - Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너, Variational Delta Neutral Bot 실거래 성공, 자동 입출금 구현 시도)
 - Day 12: 2026-01-29 (stockpick26.com 런칭, 영어 주식 용어 39개, 계산기 4개, 가이드 3개, AdSense 연동)
+- Day 13: 2026-01-30 (USB로 아이폰 테스트 성공, MoodJournal 앱 개발 시작, Apple NLP 감정 분석)
+- Day 14: 2026-01-31 (vibe-coding-2026 로그 Day 3-14 추가, README 로드맵 업데이트)
+- Day 15: 2026-02-01 (tread.fi MM 봇 공부, MM Timing Signal 대시보드, Nado 첫 실전)
+
+---
+
+## 🎯 MM 봇 개발 커리큘럼
+
+**목표:** 풀 자동 MM 봇 만들기
+**현재:** Day 15 (바이브코딩)
+**예상 완료:** Day 60~80
+
+### Phase 1: 기초 다지기 (Day 16-25)
+| Day | 주제 | 프로젝트 |
+|-----|------|----------|
+| 16-18 | JavaScript 기초 | 변수, 함수, 배열, 객체 |
+| 19-21 | async/await | API 호출 이해하기 |
+| 22-25 | 에러 처리 | try/catch, 예외 상황 |
+**미니 프로젝트:** 코인 가격 조회 CLI
+
+### Phase 2: API 마스터 (Day 26-40)
+| Day | 주제 | 프로젝트 |
+|-----|------|----------|
+| 26-30 | REST API | GET/POST 요청 |
+| 31-35 | 인증/서명 | API 키, HMAC 서명 |
+| 36-40 | WebSocket | 실시간 데이터 받기 |
+**미니 프로젝트:** 실시간 가격 알림봇
+
+### Phase 3: 거래소 연동 (Day 41-55)
+| Day | 주제 | 프로젝트 |
+|-----|------|----------|
+| 41-45 | 테스트넷 거래 | 가짜 돈으로 연습 |
+| 46-50 | 주문 넣기/취소 | 실제 API 연동 |
+| 51-55 | 포지션 관리 | 잔고 조회, PnL 계산 |
+**미니 프로젝트:** 수동 트레이딩 CLI 툴
+
+### Phase 4: MM 봇 완성 (Day 56-70)
+| Day | 주제 | 프로젝트 |
+|-----|------|----------|
+| 56-60 | MM 로직 | 스프레드 계산, 주문 배치 |
+| 61-65 | 리스크 관리 | 스탑로스, 포지션 사이징 |
+| 66-70 | 24시간 운영 | 서버 배포, 모니터링 |
+**최종 프로젝트:** 나만의 MM 봇! 🎉
+
+---
+
+## 배운 것들 (Day 15)
+
+### tread.fi & Market Making
+- MM 봇 = 매수/매도 양쪽에 주문 → 스프레드로 수익
+- 현실: 변동성 크면 한쪽만 체결 → 손실
+- 진짜 목적: Nado 에어드랍 ($INK) 파밍
+
+### MM Timing Signal 대시보드
+- tftchess.com에 추가
+- 4가지 지표: ATR(35%) + Spread(25%) + Trend(25%) + Volume(15%)
+- 80점 이상 = GO, 60-79 = 주의, 60 미만 = STOP
+- Binance API (klines, depth, ticker) 사용
+
+### 첫 MM 봇 실전 결과
+- 세팅: $90 마진, 40x 레버리지(고정), 5% 스탑로스
+- 결과: $15,000 볼륨 생성, $4.5 비용
+- 비용률: $1k 볼륨당 $0.30
+- $1M 볼륨 ≈ $300 예상
+
+### tread.fi 에어드랍 가능성
+- VC 투자 받은 프로젝트 → 토큰 발행 가능성 높음
+- Nado ($INK) + tread.fi 동시 파밍 가능
 
 ---
 
@@ -624,4 +694,4 @@ npm run dev
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-01-29*
+*마지막 업데이트: 2026-02-01*
