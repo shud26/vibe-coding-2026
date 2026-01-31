@@ -50,6 +50,36 @@
 - OnchainKit + Farcaster SDK 통합
 - VPN으로 한국 차단 우회해서 등록 완료!
 
+### Day 9 (2026-01-24) - tftchess.com
+- shud-onepage 사이트 생성 (tftchess.com)
+- Supabase 연동 (PostgreSQL)
+- 원페이지 크립토 대시보드 완성
+
+### Day 10 (2026-01-26) - 웹 호환성
+- Triangle Dice 웹 브라우저 호환성 수정
+- Clawdbot (개인 AI 비서) 리서치
+- 구형 맥 서버 시도 (실패)
+
+### Day 11 (2026-01-27) - 블로그 기능
+- tftchess.com 블로그 기능 추가
+- Day 1~10 블로그 글 이전
+- Variational Delta Neutral Bot 실거래 성공!
+
+### Day 12 (2026-01-29) - stockpick26.com
+- 영어 주식 용어 사전 사이트 런칭
+- 39개 용어, 4개 계산기, 3개 가이드
+- SEO 최적화 + AdSense 연동
+
+### Day 13 (2026-01-30) - iOS 앱 개발
+- USB로 아이폰 테스트 성공!
+- MoodJournal iOS 앱 개발 시작
+- Apple NLP 감정 분석 연동
+
+### Day 14 (2026-02-01) - MM봇 공부
+- tread.fi + Nado MM봇 공부
+- tftchess.com에 MM Timing 대시보드 추가
+- BTC/USDC 실시간 변동성 분석 기능
+
 ---
 
 ## 만든 것들 (What I Built)
@@ -78,6 +108,14 @@
 | 프로젝트 | 설명 | 링크 |
 |---------|------|------|
 | 포트폴리오 사이트 | 대시보드, Todo, Paper Trading | [Live](https://shud26.vercel.app) |
+| tftchess.com | 원페이지 크립토 대시보드 + 블로그 | [Live](https://tftchess.com) |
+| stockpick26.com | 영어 주식 용어 사전 (AdSense) | [Live](https://stockpick26.com) |
+
+### 📱 iOS 앱
+| 프로젝트 | 설명 | 상태 |
+|---------|------|------|
+| DailyRecap | 미니멀 저널링 앱 | ✅ 개발 완료 |
+| MoodJournal | AI 감정 분석 일기장 | 🚧 개발 중 |
 
 ---
 
@@ -173,7 +211,7 @@ vibe-coding-2026/
 ## 블로그
 
 매일의 기록은 블로그에서 확인할 수 있습니다:
-**[shud26.vercel.app/blog](https://shud26.vercel.app/blog)**
+**[tftchess.com/blog](https://tftchess.com/blog)**
 
 ---
 
@@ -195,4 +233,4 @@ vibe-coding-2026/
 
 *Built with Claude Code*
 
-*마지막 업데이트: 2026-01-24*
+*마지막 업데이트: 2026-02-01*
