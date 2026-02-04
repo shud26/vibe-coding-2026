@@ -48,34 +48,13 @@
   - 할 일 목록
   - 김치 프리미엄 & 차익거래 기회
   - 고래 지갑 추적 + 활동 분석
-  - **Whale Alert** (5+ ETH / $50K+ 토큰 이동 텔레그램 알림, 매일 오전 8시 자동 체크)
-  - **개발 블로그** (/blog, /blog/[slug]) - Day 1~15 글, PIN 로그인 후 추가/수정/삭제
+  - **Whale Alert** (5+ ETH / $50K+ 토큰 이동 텔레그램 + 노션 자동 기록)
+  - **개발 블로그** (/blog, /blog/[slug]) - Day 1~18 글, PIN 로그인 후 추가/수정/삭제
   - **MM Timing Signal** (BTC 변동성 체크, 80점 이상일 때 MM 봇 GO)
+  - **공포탐욕지수** (Fear & Greed Index, 60초 자동 업데이트, Alternative.me API)
   - PIN 로그인 (1507)
 - DB: Supabase (airdrops, airdrop_tasks, todos, events, research, whale_wallets, whale_alerts, blog_posts)
-
-### 4. Variational Delta Neutral Bot ✅ 실거래 완료
-- 경로: `/Users/hun/vibe-coding-2026/projects/variational-delta-neutral`
-- GitHub: https://github.com/shud26/variational-delta-neutral
-- 기술: Python3, curl_cffi (Cloudflare 우회), eth_account, web3.py
-- 체인: Arbitrum One (USDC)
-- 기능:
-  - 2계정 델타뉴트럴 포인트 파밍 (A1 매수 + A2 매도 → 청산)
-  - SIWE 서명 로그인 → JWT + vr-token 인증
-  - 지정가/시장가 주문, 포지션/잔액 조회
-  - 텔레그램 알림 (사이클 완료, 잔액 부족, 수익 발생)
-  - 잔액 모니터링 ($300 이하 시 입금 알림)
-  - 자동 입출금 코드 구현 (Cloudflare 차단으로 대기 중)
-  - Arbitrum 지갑 USDC 잔액 조회 (web3.py)
-- 파일:
-  - `variational_client.py` - API 클라이언트 (로그인, 주문, 잔액, 입출금)
-  - `variational_bot.py` - 메인 봇 (델타뉴트럴 사이클, 자동 반복, 잔액 관리)
-  - `variational_app.py` - 데스크톱 GUI (tkinter)
-- 컨트랙트:
-  - Oracle: `0x84BE56470d45b7f6629A66A219a38681F6BA6172`
-  - USDC (Arbitrum): `0xaf88d065e77c8cC2239327C5EDb3A432268e5831`
-  - A1 Settlement Pool: `0xaB9Ef61C5d4c963ca4bD361577051B9b0E14a5c9`
-  - A2 Settlement Pool: `0x291B7091FD6A3bA497588fB8Abca36d13c090ba0`
+- **노션 연동**: Whale Alert → 노션 DB 자동 기록, 블로그 백업
 
 ### 5. Triangle Dice Mini App
 - 경로: `/Users/hun/vibe-coding-2026/triangle-dice-miniapp`
@@ -96,6 +75,30 @@
 - URL: https://shud26.github.io
 - 간단한 HTML/CSS 사이트
 
+### 8. DailyRecap (iOS 앱) ✅ NEW!
+- 경로: `/Users/hun/dailyrecap`
+- 기술: SwiftUI + SwiftData (iOS 17+)
+- 기능: 미니멀 저널링 앱
+  - **3가지 질문**: 오늘 한 일, 잘한 점, 내일 할 일
+  - **스마트 요약**: 한 줄 요약, 키워드 추출, 내일 팁
+  - **캘린더 뷰**: 월별 기록 확인
+  - **인사이트**: 연속 기록, 자주 쓰는 키워드, 통계
+  - **오프라인 우선**: SwiftData로 로컬 저장
+  - **데이터 내보내기**: 텍스트 파일로 백업
+- 아키텍처: MVVM
+- 상태: 개발 완료, 앱스토어 미배포
+
+### 9. MoodJournal (iOS 앱) ✅ NEW!
+- 경로: `/Users/hun/MoodJournal`
+- 기술: SwiftUI + SwiftData + Apple NLP (iOS 17+)
+- 기능: AI 감정 분석 일기장 앱
+  - **일기 작성**: 매일 하루 기록
+  - **감정 분석**: Apple NLP로 무료 AI 분석 (-1.0 ~ +1.0)
+  - **감정 그래프**: 주간/월간 감정 변화 차트
+  - **인사이트**: 연속 기록, 평균 감정, 팁
+- 아키텍처: MVVM
+- 상태: 개발 완료, 테스트 필요
+
 ---
 
 ## 만든 툴들
@@ -104,11 +107,10 @@
 |---|------|------|
 | **stockpick26.com** | `stockpick26/` | 영어 주식 용어 사전 (39개 용어, 4개 계산기, 3개 가이드) |
 | **shud-onepage** | `tftchess/` | 원페이지 크립토 대시보드 (에어드랍, 리서치, 캘린더, 블로그) |
-| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~15 블로그, Supabase blog_posts, PIN 관리 |
+| **개발 블로그** | `tftchess/src/app/blog/` | Day 1~18 블로그, Supabase blog_posts, PIN 관리 |
 | **MM Timing Signal** | `tftchess/src/app/page.tsx` | BTC 변동성 체크 대시보드 (ATR, Spread, Trend, Volume) |
 | **Whale Alert** | `tftchess/src/lib/whale-checker.ts` | 고래 지갑 5+ ETH / $50K+ 토큰 이동 텔레그램 알림 |
 | **Triangle Dice Mini App** | `vibe-coding-2026/triangle-dice-miniapp` | Base Mini App - 1v1 USDC 베팅 게임 |
-| **Variational Delta Neutral Bot** | `vibe-coding-2026/projects/variational-delta-neutral/` | 2계정 델타뉴트럴 포인트 파밍 (Arbitrum) |
 | **Cross-DEX 펀딩비 차익거래 봇** | `vibe-coding-2026/projects/funding-arbitrage/funding_arb.py` | Hyperliquid vs Binance 스프레드 모니터링 |
 | **Todo + Calendar CLI** | `vibe-coding-2026/projects/funding-arbitrage/todo_calendar.py` | 할 일 + Google Calendar 연동 |
 | **Morning Briefing Bot** | `vibe-coding-2026/projects/funding-arbitrage/morning_briefing.py` | 매일 아침 8시 오늘 일정+할일 텔레그램 알림 |
@@ -121,6 +123,8 @@
 | **실시간 대시보드** | `shud-portfolio/src/app/dashboard/` | 9개 코인, 차익거래 + 가격 갭 모니터링 |
 | **Todo List + Calendar** | `shud-portfolio/src/app/todo/` | PIN 잠금 + 텔레그램 + Google Calendar |
 | **Paper Trading** | `shud-portfolio/src/app/trade/` | 가상 $10,000으로 연습 |
+| **DailyRecap iOS 앱** | `dailyrecap/` | 미니멀 저널링 앱 (3가지 질문, 요약, 캘린더, 인사이트) |
+| **MoodJournal iOS 앱** | `MoodJournal/` | AI 감정 분석 일기장 (Apple NLP, 감정 그래프, 인사이트) |
 
 ---
 
@@ -220,8 +224,8 @@ triangle-dice-miniapp/
 | Hyperliquid | 자체 L1 | `api.hyperliquid.xyz` | ✅ 연동 |
 | Binance | - | `fapi.binance.com` | ✅ 연동 (차익거래용) |
 | Pacifica | Solana | `api.pacifica.fi` | ✅ 연동 |
-| Variational | Arbitrum | `omni.variational.io` (curl_cffi 필요) | ✅ 거래 연동 완료 (입출금 API는 CF 차단) |
-| Nado | Ink (Kraken L2) | 확인 필요 | 미연동 |
+| Variational | Arbitrum | `omni-client-api.prod.ap-northeast-1.variational.io` | ⚠️ 읽기만 가능 (Trading API 개발 중) |
+| Nado | Ink (Kraken L2) | tread.fi 통해 사용 | ✅ MM 봇 파밍 중 |
 | Extended | Starknet | 확인 필요 | 미연동 |
 
 **상세 DEX 정보:** `vibe-coding-2026/ideas/perp-dex-info.md`
@@ -254,6 +258,11 @@ triangle-dice-miniapp/
 ### Todo PIN
 - PIN: `1507`
 
+### MCP 서버 (브라우저 자동화)
+- Puppeteer MCP 설정됨 (user scope)
+- 명령어: `claude mcp list` 로 확인
+- 기능: 웹페이지 열기, 스크린샷, 클릭/입력, 스크래핑
+
 ---
 
 ## 실행 명령어
@@ -282,15 +291,6 @@ python3 todo_calendar.py done 1
 # Morning Briefing (수동 실행)
 python3 morning_briefing.py          # 바로 전송
 python3 morning_briefing.py --test   # 테스트 (전송 안함)
-
-# Variational Delta Neutral Bot
-cd /Users/hun/vibe-coding-2026/projects/variational-delta-neutral
-python3 variational_bot.py --once              # 1사이클 실행
-python3 variational_bot.py --once --dry-run    # 시뮬레이션
-python3 variational_bot.py --accounts 2        # 자동 반복
-python3 variational_bot.py --status            # 상태 확인
-python3 variational_bot.py --close-all         # 긴급 청산
-python3 variational_bot.py --balance           # 잔액 관리
 
 # 포트폴리오 사이트 로컬 실행
 cd /Users/hun/shud-portfolio
@@ -324,66 +324,10 @@ npm run dev
 
 ---
 
-## 다음에 할 것
-- [x] Vercel 배포 완료하기 ✅
-- [x] 블로그 글 작성 (Day 1-8 완료) ✅
-- [x] 대시보드 실시간 데이터 연동 ✅
-- [x] Todo List + 텔레그램 알림 ✅
-- [x] Google Calendar 연동 ✅
-- [x] 펀딩비 차익거래 모니터링 봇 ✅
-- [x] Morning Briefing Bot (매일 아침 8시 자동 알림) ✅
-- [x] 김치 프리미엄 모니터링 (대시보드에 추가) ✅
-- [x] Triangle Dice Mini App 개발 ✅
-- [x] Base Mini App 등록 시작 ✅
-- [x] shud-onepage 사이트 생성 (tftchess.com) ✅
-- [x] Whale Alert 기능 (고래 지갑 이동 텔레그램 알림) ✅
-- [x] tftchess.com 블로그 기능 추가 + Day 1~10 이전 ✅
-- [x] Variational Delta Neutral Bot 개발 + 실거래 성공 ✅
-- [x] Variational API 역공학 (로그인, 주문, 시세, 잔액) ✅
-- [x] 잔액 모니터링 + 텔레그램 알림 ✅
-- [ ] Variational 자동 입출금 (API 오픈 대기)
-- [ ] shud-onepage 이미지 첨부 기능
-- [ ] 블로그 SEO 메타태그 (og:title 등)
-- [ ] shud-onepage 광고 추가 (AdSense)
-- [ ] Triangle Dice Ready call 문제 해결
-- [ ] Base App에서 검색 가능하게 만들기
-- [ ] 메인넷 배포 (실제 USDC 사용)
-- [ ] 펀딩비 차익거래 실제 테스트 (소액)
-- [ ] 자동 진입/청산 기능 추가
-
----
-
-## 세션 종료 시 할 일
-
-⚠️ **중요: 개발 끝나기 전에 물어보기!**
-```
-"오늘도 블로그 글 쓰셔야 해요! Day X 쓸까요?"
-```
-
-블로그 위치: `tftchess.com/blog` (Supabase blog_posts 테이블)
-- 기존 위치: `/Users/hun/shud-portfolio/src/app/blog/` (Day 1~10, 이전 완료)
-- Day 1: 2026-01-17 (Claude Code 설치, BTC 가격 조회, 텔레그램 봇, GitHub 연동)
-- Day 2: 2026-01-18 (포트폴리오 사이트, 멀티 DEX 트래커, GitHub Actions, Vercel 배포)
-- Day 3: 2026-01-19 (대시보드 풀 업그레이드, Todo List + 텔레그램, React Hooks 버그 수정)
-- Day 4: 2026-01-20 (Cross-DEX 차익거래 봇, Google Calendar 연동, Todo 업그레이드)
-- Day 5: 2026-01-21 (Morning Briefing Bot, 김치 프리미엄 모니터링)
-- Day 6: 2026-01-23 (업비트 상장 알림 시도, API 리서치, 한계점 발견)
-- Day 7: 2026-01-23 (CEX/DEX 가격 갭 모니터링, 대시보드 업그레이드)
-- Day 8: 2026-01-24 (Triangle Dice → Base Mini App 변환, Account Association 완료)
-- Day 9: 2026-01-24 (shud-onepage 사이트 생성, Supabase 연동, tftchess.com 배포)
-- Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
-- Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너, Variational Delta Neutral Bot 실거래 성공, 자동 입출금 구현 시도)
-- Day 12: 2026-01-29 (stockpick26.com 런칭, 영어 주식 용어 39개, 계산기 4개, 가이드 3개, AdSense 연동)
-- Day 13: 2026-01-30 (USB로 아이폰 테스트 성공, MoodJournal 앱 개발 시작, Apple NLP 감정 분석)
-- Day 14: 2026-01-31 (vibe-coding-2026 로그 Day 3-14 추가, README 로드맵 업데이트)
-- Day 15: 2026-02-01 (tread.fi MM 봇 공부, MM Timing Signal 대시보드, Nado 첫 실전)
-
----
-
 ## 🎯 MM 봇 개발 커리큘럼
 
 **목표:** 풀 자동 MM 봇 만들기
-**현재:** Day 15 (바이브코딩)
+**현재:** Day 16 (Phase 1 완료!)
 **예상 완료:** Day 60~80
 
 ### Phase 1: 기초 다지기 (Day 16-25)
@@ -420,6 +364,216 @@ npm run dev
 
 ---
 
+## 다음에 할 것
+- [x] Vercel 배포 완료하기 ✅
+- [x] 블로그 글 작성 (Day 1-8 완료) ✅
+- [x] 대시보드 실시간 데이터 연동 ✅
+- [x] Todo List + 텔레그램 알림 ✅
+- [x] Google Calendar 연동 ✅
+- [x] 펀딩비 차익거래 모니터링 봇 ✅
+- [x] Morning Briefing Bot (매일 아침 8시 자동 알림) ✅
+- [x] 김치 프리미엄 모니터링 (대시보드에 추가) ✅
+- [x] Triangle Dice Mini App 개발 ✅
+- [x] Base Mini App 등록 시작 ✅
+- [x] shud-onepage 사이트 생성 (tftchess.com) ✅
+- [x] Whale Alert 기능 (고래 지갑 이동 텔레그램 알림) ✅
+- [x] tftchess.com 블로그 기능 추가 + Day 1~10 이전 ✅
+- [x] MoodJournal 앱 개발 시작 ✅
+- [x] MM Timing Signal 대시보드 (tftchess.com) ✅
+- [x] tread.fi + Nado MM 봇 첫 실전 ✅
+- [x] 노션 연동 (Whale Alert → 노션 자동 기록) ✅
+- [x] 블로그 노션 백업 (DB + 페이지) ✅
+- [x] 공포탐욕지수 대시보드 추가 ✅
+- [ ] MM Signal 80점 이상일 때 MM 봇 다시 돌리기
+- [ ] MoodJournal 아이폰 테스트
+- [ ] MoodJournal UI/UX 개선
+- [ ] shud-onepage 이미지 첨부 기능
+- [ ] 블로그 SEO 메타태그 (og:title 등)
+- [ ] shud-onepage 광고 추가 (AdSense)
+- [ ] Triangle Dice Ready call 문제 해결
+- [ ] Base App에서 검색 가능하게 만들기
+- [ ] 메인넷 배포 (실제 USDC 사용)
+- [ ] 펀딩비 차익거래 실제 테스트 (소액)
+- [ ] **나만의 MM 봇 만들기** (커리큘럼 Day 56-70)
+
+---
+
+## 세션 종료 시 할 일
+
+⚠️ **중요: 개발 끝나기 전에 물어보기!**
+```
+"오늘도 블로그 글 쓰셔야 해요! Day X 쓸까요?"
+```
+
+블로그 위치: `tftchess.com/blog` (Supabase blog_posts 테이블)
+- 기존 위치: `/Users/hun/shud-portfolio/src/app/blog/` (Day 1~10, 이전 완료)
+- Day 1: 2026-01-17 (Claude Code 설치, BTC 가격 조회, 텔레그램 봇, GitHub 연동)
+- Day 2: 2026-01-18 (포트폴리오 사이트, 멀티 DEX 트래커, GitHub Actions, Vercel 배포)
+- Day 3: 2026-01-19 (대시보드 풀 업그레이드, Todo List + 텔레그램, React Hooks 버그 수정)
+- Day 4: 2026-01-20 (Cross-DEX 차익거래 봇, Google Calendar 연동, Todo 업그레이드)
+- Day 5: 2026-01-21 (Morning Briefing Bot, 김치 프리미엄 모니터링)
+- Day 6: 2026-01-23 (업비트 상장 알림 시도, API 리서치, 한계점 발견)
+- Day 7: 2026-01-23 (CEX/DEX 가격 갭 모니터링, 대시보드 업그레이드)
+- Day 8: 2026-01-24 (Triangle Dice → Base Mini App 변환, Account Association 완료)
+- Day 9: 2026-01-24 (shud-onepage 사이트 생성, Supabase 연동, tftchess.com 배포)
+- Day 10: 2026-01-26 (Triangle Dice 웹 호환성 수정, Clawdbot 리서치, 구형 맥 서버 시도)
+- Day 11: 2026-01-27 (tftchess.com 블로그 기능 추가, Day 1~10 이전, 홈페이지 배너)
+- Day 12: 2026-01-29 (stockpick26.com 런칭, 영어 주식 용어 39개, 계산기 4개, 가이드 3개)
+- Day 13: 2026-01-30 (USB로 아이폰 테스트 성공, MoodJournal 앱 개발 시작, Apple NLP 감정 분석)
+- Day 14: 2026-01-31 (vibe-coding-2026 로그 Day 3-14 추가, README 로드맵 업데이트)
+- Day 15: 2026-02-01 (tread.fi MM 봇 공부, MM Timing Signal 대시보드, Nado 첫 실전)
+- Day 16: 2026-02-02 (JavaScript 기초 학습, Phase 1 완료, 코인 가격 조회기 만들기)
+- Day 17: 2026-02-03 (DreamTeller 런칭 - AI 꿈해몽 서비스 완성)
+- Day 18: 2026-02-04 (Variational 봇 실행, coinangel 스타일 학습, Puppeteer MCP 설정)
+- Day 19: 2026-02-04 (노션 연동, Whale Alert→노션, 블로그 백업, 공포탐욕지수)
+
+---
+
+## 배운 것들 (Day 19)
+
+### 노션 MCP 연동
+- Claude Code에서 노션 API 직접 호출 가능
+- 노션 Integration 만들기 → API 키 발급 → 페이지에 Connect
+- 데이터베이스 생성, 페이지 추가, 블록 추가 가능
+- GitHub Push Protection: API 키 하드코딩 차단 → 환경변수 사용
+
+### Whale Alert → 노션 자동 기록
+- whale-checker.ts에 노션 API 연동 추가
+- 고래 지갑 이동 감지 시 텔레그램 + 노션 동시 기록
+- 노션 DB 컬럼: 순서, 지갑, 방향, 금액, 토큰, USD, TX
+- Vercel 환경변수: NOTION_API_KEY, NOTION_DATABASE_ID
+
+### 블로그 노션 백업
+- Supabase blog_posts → 노션 DB/페이지로 복사
+- HTML → Notion 블록 변환 (헤딩, 불릿, 코드블록)
+- 포맷팅 중요! 텍스트 덩어리 ❌ → 구조화된 블록 ✅
+
+### 공포탐욕지수 (Fear & Greed Index)
+- Alternative.me API: `https://api.alternative.me/fng/`
+- 0-100 스케일 (0=극단적 공포, 100=극단적 탐욕)
+- 현재 14점 = 극단적 공포 → 역사적 매수 타이밍?
+- tftchess.com에 게이지 UI로 추가
+
+### 비트코인 하락장
+- BTC $75,298 (고점 대비 -31%)
+- 공포탐욕지수 14 = Extreme Fear
+- "다들 공포에 팔 때 사고, 탐욕에 살 때 팔아라" - 워렌 버핏
+
+---
+
+## 배운 것들 (Day 18)
+
+### Variational Delta Neutral Bot 실행
+- 17사이클 돌림 (성공 11, 실패 6)
+- 누적 거래량: $1,414.68
+- PnL: +$0.07
+- state.json 리셋으로 가격 급변동 체크 우회
+- OI(Open Interest) 유지가 포인트 파밍 핵심 (open→close 바로 하면 안됨)
+
+### coinangel 스타일 학습 (GitHub 분석)
+- 레포: https://github.com/coinangel-kr/coinangel-portfolio
+- 배포: https://coinangel-portfolio.vercel.app
+
+### coinangel 프로젝트 구조
+```
+src/
+├── components/
+│   ├── animations/   # FadeIn, AnimatedText, SlideIn
+│   ├── sections/     # Hero, About, Projects, Contact
+│   └── ui/           # Button, Card, ThemeToggle
+├── lib/
+│   └── constants.ts  # 데이터 중앙 관리
+└── types/
+```
+
+### coinangel 애니메이션 패턴 (Framer Motion)
+- **FadeIn**: 방향별 페이드인 (up/down/left/right), delay, duration
+- **AnimatedText**: 글자별 3D 회전 애니메이션 (stagger)
+- **whileInView**: 스크롤 시 트리거
+- **viewport={{ once: true }}**: 한 번만 실행
+
+### coinangel CSS 테마
+- 다크모드: 사이버펑크 (--accent: #00d9ff 시안, --secondary: #ff0080 핑크)
+- **glass** 효과: backdrop-filter blur
+- **gradient-text**: 그라디언트 텍스트
+- **glow-text**: 네온 글로우
+- **bg-gradient-mesh**: 배경 그라디언트
+
+### 앞으로 사이트 만들 때 스타일 구분
+| 용도 | 스타일 |
+|------|--------|
+| 랜딩페이지, 포트폴리오 | **coinangel** (애니메이션, 글로우, 멋있게) |
+| 대시보드, 툴, 봇 UI | **기존** (기능 중심, 실용적) |
+
+### SaaS와 AI 대체
+- SaaS = Software as a Service (Notion, Slack, Figma 등)
+- AI가 SaaS 대체: 앱 여러 개 → AI 하나로 통합
+- Claude Code 하나로 코딩, 배포, 봇 관리, 검색 다 함
+
+### 크립토 뉴스
+- Ledger: 2026년 1월 Global-e 통해 고객 정보 유출 (지갑 자체는 안전)
+- Leather 지갑: 망하지 않음, 정상 운영 중 (https://leather.io)
+
+### Puppeteer MCP 설정
+- Chrome 브라우저 자동화 가능
+- 설치: `claude mcp add puppeteer --scope user -- npx -y @modelcontextprotocol/server-puppeteer`
+- 확인: `claude mcp list`
+- 기능: 웹페이지 열기, 스크린샷, 클릭/입력, 스크래핑
+- Claude Code 재시작 후 사용 가능
+
+---
+
+## 배운 것들 (Day 16)
+
+### JavaScript 기초 (Phase 1 완료!)
+- 변수: `let` (바뀜), `const` (고정)
+- 함수: `function calcProfit(buy, sell) { return sell - buy }`
+- 배열: `["BTC", "ETH", "SOL"]`, 인덱스 0부터 시작
+- 객체: `{ name: "Bitcoin", price: 97000 }`
+
+### async/await (API 호출)
+```javascript
+async function getBTC() {
+  let res = await fetch("https://api.coingecko.com/...")
+  let data = await res.json()
+  console.log(data.bitcoin.usd)
+}
+```
+- `async` = 이 함수 안에서 기다릴 거야
+- `await` = 여기서 기다려!
+
+### try/catch (에러 처리)
+```javascript
+try {
+  // 시도할 코드
+} catch (error) {
+  // 실패하면 여기 실행
+}
+```
+
+### 미니 프로젝트: 코인 가격 조회기
+```javascript
+const coins = ["bitcoin", "ethereum", "solana"]
+async function checkPrices() {
+  try {
+    let url = "https://api.coingecko.com/api/v3/simple/price?ids=" + coins.join(",") + "&vs_currencies=usd"
+    let res = await fetch(url)
+    let data = await res.json()
+    for (let coin of coins) {
+      console.log(coin + ": $" + data[coin].usd)
+    }
+  } catch (error) {
+    console.log("에러: " + error.message)
+  }
+}
+```
+
+### C언어와 JavaScript 비교
+- 공통: 변수, 함수, 배열, 조건문, 반복문
+- 차이: JS는 타입 선언 없음, 배열 크기 제한 없음, 컴파일 필요 없음
+
+---
+
 ## 배운 것들 (Day 15)
 
 ### tread.fi & Market Making
@@ -442,6 +596,38 @@ npm run dev
 ### tread.fi 에어드랍 가능성
 - VC 투자 받은 프로젝트 → 토큰 발행 가능성 높음
 - Nado ($INK) + tread.fi 동시 파밍 가능
+
+---
+
+## 배운 것들 (Day 13)
+
+### 실제 아이폰 USB 테스트
+- 맥북 에어 8GB → 시뮬레이터 버거움 → USB 테스트 추천
+- USB 연결 → "이 컴퓨터 신뢰" → Xcode에서 기기 선택
+- 아이폰 설정 → 개인정보 보호 → **개발자 모드 ON**
+- 설정 → 일반 → VPN 및 기기 관리 → **개발자 신뢰**
+
+### Apple NLP 감정 분석 (무료!)
+```swift
+import NaturalLanguage
+let tagger = NLTagger(tagSchemes: [.sentimentScore])
+tagger.string = "오늘 너무 행복했다!"
+// 결과: -1.0 (부정) ~ +1.0 (긍정)
+```
+- iOS 내장이라 완전 무료
+- 오프라인에서도 작동
+- OpenAI/Claude API 대신 사용 가능
+
+### MoodJournal 앱 구조
+```
+MoodJournal/
+├── Models/JournalEntry.swift      # SwiftData 모델
+├── Services/SentimentAnalyzer.swift  # 감정 분석
+└── Views/
+    ├── JournalWriteView.swift     # 일기 작성
+    ├── MoodChartView.swift        # 감정 그래프
+    └── InsightsView.swift         # 인사이트
+```
 
 ---
 
@@ -492,35 +678,6 @@ npm run dev
 - /blog/[slug] → 개별 글 (dangerouslySetInnerHTML)
 - 홈페이지 → 최신 3개 글 프리뷰 카드
 - PIN 로그인 후 CRUD (추가/수정/삭제)
-
-### Variational DEX API 역공학
-- SIWE (Sign-In with Ethereum) 인증: plain text 메시지 서명 → JWT + vr-token 쿠키
-- curl_cffi로 Cloudflare TLS fingerprint 우회 (Chrome impersonation)
-- instrument 형식: `{"instrument_type": "perpetual_future", "underlying": "BTC", "funding_interval_s": 3600, "settlement_asset": "USDC"}`
-- 주문: `rfq_id`로 추적, `order_type: "limit"` + `limit_price` 필요
-- 시장가: `quote_id`만으로 주문
-- 잔액: `/api/settlement_pools/details` → `data["balance"]`
-- Cloudflare 429 rate limit → 재시도 로직 (exponential backoff)
-
-### 델타뉴트럴 전략 실전
-- A1 매수 + A2 매도 → 같은 가격에 양방향 주문
-- 체결 후 역방향 주문으로 청산
-- 가격 위험 없이 거래량 발생 → 포인트 파밍
-- 부분 체결 시 시장가 청산으로 손실 최소화
-
-### Variational 자동 입출금 (미완)
-- 스마트 컨트랙트 `depositUSDC`/`withdrawUSDC`는 PROVIDER_ROLE 필요 (직접 호출 불가)
-- 입금 흐름: ERC-2612 permit 서명 → API → 백엔드가 온체인 실행
-- API 엔드포인트 찾음: `/api/transfers/permit/template`, `/api/transfers/new`
-- 하지만 Cloudflare JavaScript 챌린지로 차단됨
-- Oracle 컨트랙트의 `getPool(uint128)` 함수로 pool 주소 조회 가능
-- web3.py로 Arbitrum 온체인 USDC 잔액 조회 구현
-
-### Variational 컨트랙트 구조
-- Oracle 컨트랙트: 모든 입출금 트랜잭션 실행 (PROVIDER_ROLE 필요)
-- Settlement Pool Factory: 사용자별 풀 생성
-- Settlement Pool: 사용자-OLP 쌍별 독립 풀 (EIP-1167 minimal proxy)
-- ERC-2612 permit: USDC가 네이티브 지원, 가스비 없이 승인 가능
 
 ---
 
@@ -694,4 +851,4 @@ npm run dev
 - DEX 정보: `vibe-coding-2026/ideas/perp-dex-info.md`
 
 ---
-*마지막 업데이트: 2026-02-01*
+*마지막 업데이트: 2026-02-04*
