@@ -86,6 +86,44 @@
 - Nado $110 입금, MM 봇 첫 실전 ($15k 볼륨, $4.5 비용)
 - MM 봇 개발 커리큘럼 작성 (Day 16-70)
 
+### Day 20 (2026-02-06) - MM Bot 대시보드
+- Nado MM Bot 전용 대시보드 제작 (mmbot-mu.vercel.app)
+- wagmi v2 + RainbowKit + Supabase 연동
+- Ink Chain 커스텀 체인 설정 (Chain ID: 57073)
+
+### Day 25~30 (2026-02-~03월) - coindungeon 런칭
+- 코인던전 (coindungeon.vercel.app) 오픈
+- 크립토 실전 퀘스트 사이트: 30퀘스트, 30용어, 3가이드
+- Phaser 3 RPG 던전 게임 내장
+- SSG 77페이지, sitemap 83개 URL
+- 데일리 퀴즈, 업다운 미니게임 추가
+
+### Day 35 (2026-03-08) - Mac Mini M2 서버 구축 🖥️
+- Mac Mini M2 16GB/512GB 구매 (45만원)
+- Homebrew + pyenv + Python 3.11 설치
+- Ollama qwen2.5:14b 설치 (9GB 모델)
+- 봇 5개 LaunchAgent 등록 (24시간 자동 실행)
+- iMac에서 Mac Mini로 봇 전체 이전 완료
+
+### Day 40 (2026-03월~) - nado_grid LIVE 🤖
+- BTC+ETH 동시 핑퐁 봇 맥미니에서 24시간 실행
+- 전략: 90초 사이클, 동적 gap (TimesFM 기반)
+- 스톱로스, 원웨이 감지, 서킷브레이커 구현
+- BTC PnL: +$7.20 (RT 42), ETH는 파라미터 튜닝 중
+
+### Day 45 (2026-04월) - ink_farmer 30계정 파밍 🌾
+- Ink Chain (Kraken L2) 에어드랍 파밍
+- 30개 계정 자동화: GM + 스왑 + 소액거래
+- acc_11~30 ETH 충전 (총 0.1 ETH 분배)
+- 다양화 코드 적용: 액션 풀 5개, 15% 스킵, 역방향 스왑
+- "농부처럼 말고 유저처럼" 전략으로 전환
+
+### Day 48 (2026-04-23) - 봇 생태계 안정화 ⚙️
+- clawbot Telegram 409 에러 수정 (토큰 충돌 해결)
+- claw_bot qwen2.5:14b 업그레이드 완료
+- hunslog.tistory.com 블로그 운영 시작 (봇 운영 후기)
+- Qwen3 모델 연구 및 하드웨어 업그레이드 전략 수립
+
 ---
 
 ## 만든 것들 (What I Built)
@@ -153,23 +191,24 @@ API:       Telegram Bot, Google Calendar, CoinGecko
 | 웹사이트 3개 | shud26, tftchess, stockpick26 | ✅ 완료 |
 | iOS 앱 2개 | DailyRecap, MoodJournal | ✅ 완료 |
 
-### Phase 2: 실전 파밍 (2-3월) 🚧 진행 중
+### Phase 2: 실전 파밍 (2-4월) ✅ 진행 중
 
 | 프로젝트 | 설명 | 상태 |
 |---------|------|------|
-| Nado MM봇 파밍 | tread.fi로 포인트 파밍 | 🚧 준비 중 |
-| 에어드랍 자동화 | 데드라인 알림, 태스크 템플릿 | 예정 |
-| Variational 자동 입출금 | API 오픈 대기 | ⏳ 대기 |
-| 실제 수익 창출 | MM + 에어드랍 수익 | 예정 |
+| Nado MM봇 (nado_grid) | BTC+ETH 핑퐁 봇 맥미니 24시간 | ✅ LIVE |
+| ink_farmer | Ink Chain 30계정 에어드랍 파밍 | ✅ LIVE |
+| claw_bot | 개인 AI 비서 (qwen2.5:14b) | ✅ LIVE |
+| Mac Mini 서버 | 봇 5개 LaunchAgent 24시간 운영 | ✅ 구축 완료 |
+| 실제 수익 창출 | nado_grid BTC PnL +$7.20 | ✅ 진행 중 |
 
-### Phase 3: 웹/앱 수익화 (4-6월)
+### Phase 3: 블로그 + 수익화 (4-6월) 🚧 진행 중
 
 | 프로젝트 | 설명 | 상태 |
 |---------|------|------|
-| stockpick26 AdSense | 광고 수익 | 예정 |
-| iOS 앱 앱스토어 출시 | MoodJournal 출시 | 예정 |
-| 추가 SEO 사이트 | 크립토 용어 사전 등 | 예정 |
-| 백테스팅 도구 | 전략 테스트 | 예정 |
+| hunslog.tistory.com | 봇 운영 후기 블로그 | ✅ 운영 중 |
+| tftchess.com AdSense | 블로그 광고 수익 | 🚧 신청 예정 |
+| hunslog_bot | 블로그 자동화 봇 (Ollama 글 생성) | 🚧 맥미니 배포 대기 |
+| KIS 주식봇 | ETF MA 추세 추종 자동매매 | 예정 |
 
 ### Phase 4: 스케일업 (7-12월)
 
@@ -246,4 +285,4 @@ vibe-coding-2026/
 
 *Built with Claude Code*
 
-*마지막 업데이트: 2026-02-01*
+*마지막 업데이트: 2026-04-23*
