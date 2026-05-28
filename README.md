@@ -124,6 +124,34 @@
 - hunslog.tistory.com 블로그 운영 시작 (봇 운영 후기)
 - Qwen3 모델 연구 및 하드웨어 업그레이드 전략 수립
 
+### Day 49~55 (2026-05월 초~중순) - arc_farmer 780계정 + 블로그 자동화 🌾
+- arc_farmer 분리 구축: ink_farmer(30계정)와 별도로 Arc testnet 전용 780계정 파밍
+- 액션 풀: 컨트랙트 배포, NFT 민트, DEX 스왑, FlowFi 예치, GM 스트릭, FlowOnArc
+- **hunslog_bot 개발**: Ollama qwen2.5:14b 글 생성 → 텔레그램 승인 → 티스토리 자동 발행
+- 블로그 커맨드: /draft, /publish, /regen, /skip, /full
+- 매일 랜덤 시각 자동 발행 (LaunchAgent)
+
+### Day 56 (2026-05-26) - nado_grid 대수술 🔧
+- 8일치 JSONL 로그 분석: RT **0회**, 스톱로스 **70회** 발견 (치명적 버그!)
+- **근본 원인**: 포지션 있을 때도 오더 재세팅 → 한쪽만 체결 → 스톱로스 반복
+- **버그픽스**: `포지션 있으면 드리프트 재세팅 스킵` 로직 추가
+- 파라미터 조정: gap $400→$600, drift_threshold 2.5%→5.0%, stop_loss 2.0%→2.5%
+- 효과: 다음날 pair_placed 수백→20, stop_loss 0회, RT +9
+- **FastAPI 실시간 대시보드 제작** (port 8788, Linear 미니멀 디자인, LaunchAgent 등록)
+
+### Day 57~58 (2026-05-27~28) - 버그 사냥 + 속도 개선 🐛
+- 서킷브레이커 threshold 수정: $200 → $400 (`$75 × 3 = $225`에서 즉시 발동되던 문제)
+- arc_farmer Faucet 병목 해결: 실패 시 30분 대기 → **즉시 다음 계정 스킵**
+- arc_farmer 파라미터 개선: 계정 간 딜레이 5~15분 → 2~6분, 처리 비율 5% → 8%
+
+### Day 59 (2026-05-29) - trend_bot 진짜 버그 발견 + 포인트 전략 💡
+- **치명적 발견**: trend_bot이 수개월간 페이퍼 트레이딩 상태였음
+  - ORDER_USD $75 → 0.001 BTC × $73k = **$73.5 < Nado 최소 $100** → 주문 전부 실패
+  - API가 "error" 반환하는데 코드는 "failure"만 체크 → 실패를 성공으로 인식
+  - 수정: ORDER_USD $75 → **$150**, status 체크 `"failure"` + `"error"` 모두
+- grid_bot gap **$600 → $400** (포인트 극대화, RT 빈도 1.5배 목표)
+- 전략 방향: **돈보다 포인트** (Nado/Ink 에어드랍 포지셔닝)
+
 ---
 
 ## 만든 것들 (What I Built)
@@ -144,6 +172,13 @@
 ### 🤖 봇 & 자동화
 | 프로젝트 | 설명 | 상태 |
 |---------|------|------|
+| nado_grid (grid_bot) | BTC-PERP 핑퐁봇, TimesFM 동적 gap, RT 202회 | ✅ LIVE |
+| nado_trend (trend_bot) | TimesFM 방향 신호 기반 추세 추종 | ✅ LIVE |
+| arc_farmer | Arc testnet 780계정 에어드랍 파밍 | ✅ LIVE |
+| ink_farmer | Ink Chain 30계정 에어드랍 파밍 | ✅ LIVE |
+| claw_bot | 개인 AI 비서 (qwen2.5:14b, 모닝브리핑) | ✅ LIVE |
+| hunslog_bot | 봇 데이터 → Ollama 글 생성 → 티스토리 자동 발행 | ✅ LIVE |
+| nado 대시보드 | FastAPI 실시간 대시보드 (port 8788, Linear 디자인) | ✅ LIVE |
 | Morning Briefing Bot | 매일 아침 8시 일정+할일 알림 | ✅ 완료 |
 | BTC 가격 알림봇 | 만 달러 단위 돌파 알림 | ✅ 완료 |
 | 텔레그램 알림 시스템 | 각종 알림 통합 | ✅ 완료 |
@@ -201,14 +236,22 @@ API:       Telegram Bot, Google Calendar, CoinGecko
 | Mac Mini 서버 | 봇 5개 LaunchAgent 24시간 운영 | ✅ 구축 완료 |
 | 실제 수익 창출 | nado_grid BTC PnL +$7.20 | ✅ 진행 중 |
 
-### Phase 3: 블로그 + 수익화 (4-6월) 🚧 진행 중
+### Phase 3: 블로그 + 수익화 (4-6월) ✅ 진행 중
 
 | 프로젝트 | 설명 | 상태 |
 |---------|------|------|
 | hunslog.tistory.com | 봇 운영 후기 블로그 | ✅ 운영 중 |
-| tftchess.com AdSense | 블로그 광고 수익 | 🚧 신청 예정 |
-| hunslog_bot | 블로그 자동화 봇 (Ollama 글 생성) | 🚧 맥미니 배포 대기 |
+| hunslog_bot | Ollama 자동 글 생성 + 티스토리 발행 | ✅ LIVE |
+| tftchess.com AdSense | 블로그 광고 수익 | 🚧 심사 중 |
 | KIS 주식봇 | ETF MA 추세 추종 자동매매 | 예정 |
+
+### Phase 3.5: 포인트 파밍 (5-6월) 🎯 진행 중
+
+| 프로젝트 | 설명 | 상태 |
+|---------|------|------|
+| Nado 포인트 극대화 | gap $400, 다계정 활성화 예정 | ✅ 진행 중 |
+| Ink Chain 에어드랍 | ink_farmer 30계정 꾸준히 | ✅ LIVE |
+| Arc testnet 파밍 | 780계정, 처리 속도 최적화 완료 | ✅ LIVE |
 
 ### Phase 4: 스케일업 (7-12월)
 
@@ -285,4 +328,4 @@ vibe-coding-2026/
 
 *Built with Claude Code*
 
-*마지막 업데이트: 2026-04-23*
+*마지막 업데이트: 2026-05-29*
