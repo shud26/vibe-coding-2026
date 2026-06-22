@@ -1,0 +1,16 @@
+
+# 개인 설정·민감정보 (public 노출 방지)
+CLAUDE.md
+CLAUDE_BACKUP.md
+.DS_Store
+**/.DS_Store
+.env
+**/.env
+!**/.env.example
+credentials.json
+**/credentials.json
+token.json
+**/token.json
+.token.json
+*.key
+service-account*.json
