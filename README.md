@@ -1,8 +1,15 @@
-# Vibe Coding 2026
+# 🚀 Vibe Coding 2026
 
-2026년, 바이브코딩으로 성장하는 1년간의 여정
+> **코딩 0에서 시작해, Claude Code와 함께 매일 조금씩 — 1년간 만들고 *배포한* 기록.**
 
-**코딩을 전혀 모르는 상태에서 시작해서, Claude Code와 함께 매일 조금씩 성장하고 있습니다.**
+![Journey](https://img.shields.io/badge/Journey-Day_60+-8B7CFF?style=flat-square)
+![Projects](https://img.shields.io/badge/Projects-15+-4C6EF5?style=flat-square)
+![Bots_Live](https://img.shields.io/badge/Bots_Live-7-2F9E44?style=flat-square)
+![Built_with](https://img.shields.io/badge/Built_with-Claude_Code-D97706?style=flat-square)
+
+**🔗 Live:** [coindungeon](https://coindungeon.vercel.app) · [tftchess](https://tftchess.com) · [Triangle Dice](https://triangle-dice-miniapp.vercel.app) · [portfolio](https://shud26.vercel.app)
+
+코딩을 전혀 모르는 상태에서 시작해서, 매일 조금씩 만들고 배포하며 성장하고 있습니다.
 
 ---
 
@@ -152,6 +159,12 @@
 - grid_bot gap **$600 → $400** (포인트 극대화, RT 빈도 1.5배 목표)
 - 전략 방향: **돈보다 포인트** (Nado/Ink 에어드랍 포지셔닝)
 
+### Day 60+ (2026-06월) - 콘텐츠 폭발 + 봇 재설계 🔥
+- **coindungeon 대확장**: 용어사전 100→103개, 블로그 7→11편 (하루 4편 발행 — TGE·토큰화·솔라나·디파이)
+- **트위터 다이제스트 자동화**: RSSHub → Ollama 번역 → 옵시디언. 핵심/잡담 노이즈 필터, 코인 멘션 TOP5, 글감·신규용어 자동 적립 → 코인던전으로 연결되는 콘텐츠 파이프라인
+- **nado 봇 점검·재설계**: 손절 더스트 청산불능 버그 픽스 + **메이커 전용 델타뉴트럴 파밍봇(maker_farm) 신규** — "방향성 리스크 0, 메이커 포인트만"
+- 운영 원칙 정립: **WIP=2** (동시 작업 2개), **"만들기보다 내보내기"**
+
 ---
 
 ## 만든 것들 (What I Built)
@@ -186,8 +199,9 @@
 ### 🌐 웹사이트
 | 프로젝트 | 설명 | 링크 |
 |---------|------|------|
-| 포트폴리오 사이트 | 대시보드, Todo, Paper Trading | [Live](https://shud26.vercel.app) |
+| **coindungeon** | 크립토 실전 교육 — 퀘스트 · 용어사전 103개 · 블로그 11편 · Phaser 3 RPG 던전 | [Live](https://coindungeon.vercel.app) |
 | tftchess.com | 원페이지 크립토 대시보드 + 블로그 | [Live](https://tftchess.com) |
+| 포트폴리오 사이트 | 대시보드, Todo, Paper Trading | [Live](https://shud26.vercel.app) |
 | stockpick26.com | 영어 주식 용어 사전 (AdSense) | [Live](https://stockpick26.com) |
 
 ### 📱 iOS 앱
@@ -201,12 +215,14 @@
 ## 기술 스택 (Tech Stack)
 
 ```
-Frontend:  Next.js, React, TypeScript, Tailwind CSS
-Backend:   Python, Node.js
+Frontend:  Next.js 16, React, TypeScript, Tailwind CSS v4, MDX, Phaser 3
+Backend:   Python 3.11, Node.js, FastAPI
+Local AI:  Ollama (qwen2.5:14b) — 글 자동생성 · AI 비서
 Web3:      wagmi, viem, OnchainKit, Farcaster SDK
-Chain:     Base (Sepolia Testnet)
+Chain:     Base, Ink L2 (Nado perp DEX)
+Infra:     Mac Mini M2 서버 — LaunchAgent로 봇 24시간 운영
 Deploy:    Vercel, GitHub Actions
-API:       Telegram Bot, Google Calendar, CoinGecko
+API:       Telegram Bot, Google Calendar, CoinGecko, KIS
 ```
 
 ---
@@ -297,6 +313,7 @@ vibe-coding-2026/
 
 ## 관련 레포
 
+- [coindungeon](https://github.com/shud26/coindungeon) - 크립토 실전 교육 퀘스트 사이트
 - [shud-portfolio](https://github.com/shud26/shud-portfolio) - 포트폴리오 웹사이트
 - [triangle-dice-miniapp](https://github.com/shud26/triangle-dice-miniapp) - Base Mini App 게임
 - [crypto-portfolio](https://github.com/shud26/crypto-portfolio) - 크립토 가격 트래커
@@ -328,4 +345,4 @@ vibe-coding-2026/
 
 *Built with Claude Code*
 
-*마지막 업데이트: 2026-05-29*
+*마지막 업데이트: 2026-06-28*
